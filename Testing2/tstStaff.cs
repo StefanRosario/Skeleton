@@ -5,15 +5,15 @@ using System;
 namespace Testing2
 {
     [TestClass]
-    public class tstAddress
+    public class tstStaff
     {
         [TestMethod]
         private static void InstanceOK()
         {
             //create an instance of the class we want to create
-            clsStaff AnAddress = new clsStaff();
+            clsStaff AStaff = new clsStaff();
             //test to see that it exists
-            Assert.IsNotNull(AnAddress);
+            Assert.IsNotNull(AStaff);
             }
 
         [TestMethod]
