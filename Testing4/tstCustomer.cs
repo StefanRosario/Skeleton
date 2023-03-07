@@ -5,10 +5,9 @@ using System;
 namespace Testing4
 {
     [TestClass]
-    public class tstCustomer
+    public class TstCustomer
     {
-        public object AnAddress { get; private set; }
-        public object Testdata { get; private set; }
+        
 
         [TestMethod]
         public void InstanceOk()
@@ -31,7 +30,7 @@ namespace Testing4
             //assign data to property 
             ACustomer.DateAdded = TestData;
             //test to see if two values are the same 
-            Assert.AreEqual(ACustomer.DateAdded, Testdata);
+            Assert.AreEqual(ACustomer.DateAdded, TestData);
         }
 
         [TestMethod]
@@ -44,10 +43,15 @@ namespace Testing4
             //assign the data to the property 
             ACustomer.CustomerId = TestData;
             //test to see if the two values match 
-            Assert.AreEqual(ACustomer.CustomerId.TestData);
+            Assert.AreEqual(ACustomer.CustomerId, TestData);
         }
 
+        [TestMethod]
 
+        public void FullName()
+        {
+
+        }
     }
 }
 
