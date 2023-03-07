@@ -50,8 +50,19 @@ namespace Testing4
 
         public void FullName()
         {
-
+            //creates class instantly 
+            clsCustomer ACustomer = new clsCustomer();
+            //creates test data to assign to property 
+            String TestData = "Duke Dennis";
+            //assign the data to the property
+            ACustomer.FullName = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(ACustomer.FullName, TestData);
         }
+
+        [TestMethod]
+
+        public void 
     }
 }
 
