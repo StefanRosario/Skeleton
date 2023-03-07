@@ -21,5 +21,6 @@ namespace ClassLibrary
     {
         public DateTime DateAdded { get; set; }
         public int CustomerId { get; set; }
+        public string FullName { get; set; }
     }
 }
