@@ -7,10 +7,10 @@ namespace Testing4
     [TestClass]
     public class TstCustomer
     {
-        
+        public object DataTime { get; private set; }
 
         [TestMethod]
-        public void InstanceOk()
+        public void ClassCustomerInstanceOk()
         {
             //creates class that wants to be created 
             clsCustomer ACustomer = new clsCustomer();
@@ -62,7 +62,44 @@ namespace Testing4
 
         [TestMethod]
 
-        public void 
+        public void EmailAddress()
+        {
+            //create class instantly 
+            clsCustomer ACustomer = new clsCustomer();
+            //create test data to assign to property 
+            string TestData = "DK@my365.dmu.ac.uk";
+            //assign the data to the property
+            ACustomer.EmailAddress = TestData;
+            //determine if both values match 
+            Assert.AreEqual(ACustomer.EmailAddress, TestData);
+        }
+
+        [TestMethod]
+
+        public void ShippingAddress()
+        {
+            //creates class instantly 
+            clsCustomer ACustomer = new clsCustomer();
+            //create test data to assign to property
+            string TestData = "24 Rizz st";
+            //assign the data to the property 
+            ACustomer.ShippingAddress = TestData;
+            //determine if both values match 
+            Assert.AreEqual(ACustomer.ShippingAddress, TestData);
+        }
+
+        [TestMethod]
+
+        public void DateRegistered()
+        {
+            clsCustomer AnOrder = new clsCustomer();
+            //create some test data
+            DateTime TestData = DateTime.Now.Date;
+            //assign the data to the property
+            AnOrder.CustomerDate = TestData;
+            //test to see if the two values are the same
+            Assert.AreEqual(AnOrder.CustomerDate, TestData);
+
+        }
     }
 }
-
