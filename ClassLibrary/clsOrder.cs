@@ -17,10 +17,5 @@ namespace ClassLibrary
         public bool IsEnabled { get; set; }
     }
 
-    public class clsCustomer
-    {
-        public DateTime DateAdded { get; set; }
-        public int CustomerId { get; set; }
-        public string FullName { get; set; }
-    }
+    
 }
