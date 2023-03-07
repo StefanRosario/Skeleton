@@ -16,4 +16,10 @@ namespace ClassLibrary
         public decimal TotalCost { get; set; }
         public bool IsEnabled { get; set; }
     }
+
+    public class clsCustomer
+    {
+        public DateTime DateAdded { get; set; }
+        public int CustomerId { get; set; }
+    }
 }
