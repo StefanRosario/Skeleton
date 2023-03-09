@@ -10,7 +10,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        Response.Redirect("AddressBookViewer.aspx");
+        //Create a new instance of clsStaff
+        clsStaff AStaff = new clsStaff();
+        //Capture the Username and password
+        AStaff.Username = txtUsername.Text;
+        //Store the username in the session object
+        Session["AStaff"] = AStaff;
+        //Navigate to the viewer page
+        Response.Redirect("StaffManagementViewer.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
