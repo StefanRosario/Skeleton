@@ -11,4 +11,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void bttnCancel_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void BttnOk_Click(object sender, EventArgs e)
+    {
+        
+        //navigate to the viewer page 
+        Response.Redirect("CustomerViewer.aspx");
+        
+    }
 }
