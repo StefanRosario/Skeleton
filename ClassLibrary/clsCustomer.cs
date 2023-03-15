@@ -1,11 +1,7 @@
 ﻿using System;
 
-namespace ClassLibrary
-{
-    public class classCustomer
-    {
+using ClassLibrary;
 
-    }
 
     public class clsCustomer
     {
@@ -17,4 +13,3 @@ namespace ClassLibrary
         public DateTime DateDated { get; set; }
         public DateTime CustomerDate { get; set; }
     }
-}
