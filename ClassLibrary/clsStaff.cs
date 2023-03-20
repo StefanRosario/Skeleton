@@ -11,5 +11,11 @@ namespace ClassLibrary
         public string Role { get; set; }
         public DateTime DateAdded { get; set; }
         public bool IsEnabled { get; set; }
+
+        public bool Find(int staffID)
+        {
+            //Always retun true
+            return true;
+        }
     }
 }
