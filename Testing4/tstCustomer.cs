@@ -8,6 +8,7 @@ namespace Testing4
     public class TstCustomer
     {
         public object DataTime { get; private set; }
+        public bool OK { get; private set; }
 
         [TestMethod]
         public void ClassCustomerInstanceOk()
@@ -101,5 +102,45 @@ namespace Testing4
             Assert.AreEqual(AnOrder.CustomerDate, TestData);
 
         }
+
+        //week 23
+
+        [TestMethod]
+
+        public void FindMethodOk()
+        {
+            //create instance of class we like to create 
+            clsCustomer ACustomer = new clsCustomer();
+            //Boolean variable to store the results of the validation 
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 CustomerNo = 21;
+            //invoke the method
+            Found = ACustomer.Find(CustomerNo);
+            //test to see if the resultd are true 
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+
+        public void TestCustomerNoFound()
+        {
+            //create instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to store results of the search 
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 CustomerNo = 21;
+            //invoke the method
+            Found = ACustomer.Find(CustomerNo);
+            //checking customer number 
+            if(ACustomer.CustomerNo != 21)
+            {
+                OK = false;
+            }
+            //test to see if the results are true 
+            Assert.IsTrue(OK);
+        }
+
     }
 }
