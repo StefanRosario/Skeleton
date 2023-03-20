@@ -14,7 +14,7 @@
         <asp:Label ID="lblCostumerID" runat="server" style="z-index: 1; left: 11px; top: 68px; position: absolute; width: 70px" Text="CostumerID"></asp:Label>
         <asp:TextBox ID="txtCostumerID" runat="server" style="z-index: 1; left: 109px; top: 63px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblOrderDate" runat="server" style="z-index: 1; left: 11px; top: 103px; position: absolute; width: 70px" Text="OrderDate"></asp:Label>
-        <asp:TextBox ID="txtOrderDate" runat="server" style="z-index: 1; left: 109px; top: 97px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtOrderDate" runat="server" style="z-index: 1; left: 109px; top: 97px; position: absolute; height: 22px;"></asp:TextBox>
         <asp:Label ID="lblTotalCost" runat="server" style="z-index: 1; left: 16px; top: 141px; position: absolute; right: 432px; width: 70px" Text="TotalCost"></asp:Label>
         <asp:TextBox ID="txtTotalCost" runat="server" style="z-index: 1; left: 108px; top: 140px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblShippingAddress" runat="server" style="z-index: 1; left: 7px; top: 19px; position: absolute; width: 70px" Text="Shipping Address"></asp:Label>
