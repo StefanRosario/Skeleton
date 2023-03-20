@@ -101,5 +101,27 @@ namespace Testing4
             Assert.AreEqual(AnOrder.CustomerDate, TestData);
 
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //Create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //Bollean variable to store the results of the validation
+            Boolean Found = false;
+            //Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //Create some test data to use with the method
+            Int32 StaffID = 1;
+            //Invoke the method
+            Found = AStaff.Find(StaffID);
+            //Check the StaffID
+            if (AStaff.StaffID != 21)
+            {
+                OK = false;
+            }
+            //Test to see if the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }
