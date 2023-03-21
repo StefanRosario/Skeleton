@@ -17,11 +17,7 @@ public partial class _1Viewer : System.Web.UI.Page
         
         //navigate to the viewer page
         Response.Write(AnOrder.ShippingAddress);
-        Response.Write(AnOrder.CostumerID);
-        Response.Write(AnOrder.OrderDate);
-        Response.Write(AnOrder.TotalCost);
-        Response.Write(AnOrder.OrderID);
-        Response.Write(AnOrder.IsEnabled);
+        
               
         }   
     }
