@@ -106,22 +106,39 @@ namespace Testing4
         public void FindMethodOK()
         {
             //Create an instance of the class we want to create
-            clsStaff AStaff = new clsStaff();
+            clsCustomer ACustomer = new clsCustomer();
             //Bollean variable to store the results of the validation
             Boolean Found = false;
             //Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //Create some test data to use with the method
-            Int32 StaffID = 1;
+            Int32 CustomerId = 1;
             //Invoke the method
-            Found = AStaff.Find(StaffID);
+            Found = ACustomer.Find(CustomerId);
             //Check the StaffID
-            if (AStaff.StaffID != 21)
+            if (ACustomer.CustomerId != 21)
             {
                 OK = false;
             }
             //Test to see if the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsTrue(Found);
         }
+            
+        public void TestAddressNoFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            //Boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable records if datas data is ok
+            Boolean OK = true;
+
+
+            
+            Int32 CustomerId = 21;
+            //invoke the method
+
+
+        }
+
     }
 }
