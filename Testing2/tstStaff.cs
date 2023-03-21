@@ -93,7 +93,122 @@ namespace Testing2
             //test to see if the two values are the same
             Assert.AreEqual(AStaff.IsEnabled, TestData);
         }
+        
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 StaffID = 21;
+            String Username = "johnsmith";
+            String Password = "password123";
+            String Role = "Manager";
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            Found = AStaff.Find(Username);
+            Found = AStaff.Find(Password);
+            Found = AStaff.Find(Role);
+ 
+            //test to see that the result is correct
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestStaffIDNoFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StaffID = 21;
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            //check the address no
+            if (AStaff.StaffID != 21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestUsernameFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            String Username = "johnsmith";
+            //invoke the method
+            Found = AStaff.Find(Username);
+            //check the property
+            if (AStaff.Username != Username)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestPasswordFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            String Password = "password123";
+            //invoke the method
+            Found = AStaff.Find(Password);
+            //check the property
+            if (AStaff.Password != Password)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestRoleFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            String Role = "Manager";
+            //invoke the method
+            Found = AStaff.Find(Role);
+            //check the property
+            if (AStaff.Role != Role)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(Found);
+        }
+
+        
+
+
     }
 
 
 }
+
