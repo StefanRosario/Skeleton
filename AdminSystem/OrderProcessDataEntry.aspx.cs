@@ -19,11 +19,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsOrder AnOrder = new clsOrder();
         //capture the OrderID
         AnOrder.ShippingAddress = txtShppingAddress.Text;
-        AnOrder.TotalCost = Convert.ToDecimal(txtTotalCost);
-        AnOrder.OrderDate = Convert.ToDateTime(txtOrderDate);
-        AnOrder.CostumerID = Convert.ToInt32(txtCostumerID);
-        AnOrder.OrderID = Convert.ToInt32(txtOrderID);
-        AnOrder.IsEnabled = Convert.ToBoolean(chkShipped);
+      
+       
 
         //Store Order int the session Object
         Session["An Order"] = AnOrder;
