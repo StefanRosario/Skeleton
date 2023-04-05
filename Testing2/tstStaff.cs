@@ -82,18 +82,18 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void IsAuthorizedPropertyOK()
+        public void ActivePropertyOK()
         {
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
             //create some test data
             Boolean TestData = true;
             //assign the data to the property
-            AStaff.IsEnabled = TestData;
+            AStaff.Active = TestData;
             //test to see if the two values are the same
-            Assert.AreEqual(AStaff.IsEnabled, TestData);
+            Assert.AreEqual(AStaff.Active, TestData);
         }
-        
+
         [TestMethod]
         public void FindMethodOK()
         {
@@ -102,16 +102,9 @@ namespace Testing2
             //boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffID = 21;
-            String Username = "johnsmith";
-            String Password = "password123";
-            String Role = "Manager";
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
-            Found = AStaff.Find(Username);
-            Found = AStaff.Find(Password);
-            Found = AStaff.Find(Role);
- 
             //test to see that the result is correct
             Assert.IsTrue(Found);
         }
@@ -126,11 +119,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 21;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check the address no
-            if (AStaff.StaffID != 21)
+            if (AStaff.StaffID != 1)
             {
                 OK = false;
             }
@@ -148,16 +141,16 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            String Username = "johnsmith";
+            Int32 StaffID = 1;
             //invoke the method
-            Found = AStaff.Find(Username);
+            Found = AStaff.Find(StaffID);
             //check the property
-            if (AStaff.Username != Username)
+            if (AStaff.Username != "miguelcorachea")
             {
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
 
         [TestMethod]
@@ -170,16 +163,16 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            String Password = "password123";
+            Int32 StaffID = 21;
             //invoke the method
-            Found = AStaff.Find(Password);
+            Found = AStaff.Find(StaffID);
             //check the property
-            if (AStaff.Password != Password)
+            if (AStaff.Password != "abcd123")
             {
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
 
         [TestMethod]
@@ -192,21 +185,61 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            String Role = "Manager";
+            Int32 StaffID = 1;
             //invoke the method
-            Found = AStaff.Find(Role);
+            Found = AStaff.Find(StaffID);
             //check the property
-            if (AStaff.Role != Role)
+            if (AStaff.Role != "Customer Manager")
             {
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
 
-        
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StaffID = 1;
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            //check the property
+            if (AStaff.DateAdded != Convert.ToDateTime("22/02/2023"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
 
-
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StaffID = 21;
+            //invoke the method
+            Found = AStaff.Find(StaffID);
+            //check the property
+            if (AStaff.Active != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 
 
