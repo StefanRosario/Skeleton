@@ -78,39 +78,33 @@ namespace ClassLibrary
                 mDateAdded = value;
             }
         }
-        private Boolean mIsEnabled;
-        public bool IsEnabled
-        {
-            get
-            {
-                return mIsEnabled;
-            }
-            set
-            {
-                mIsEnabled = value;
-            }
-        }
 
         public bool Find(int staffID)
         {
-            mStaffID = 21;
-            //Always retun true
-            return true;
-        }
-
-        public bool Find(string username)
-        {
-            return true;
-        }
-
-        public bool Find(DateTime dateAdded)
-        {
-            return true;
-        }
-
-        public bool Find(Boolean isEnabled)
-        {
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address no to search for
+            DB.AddParameter("@StaffID", StaffID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaffManagement_FilterByStaffID");
+            //if one record is found (there should be either one or zero!)
+            if (DB.Count ==1)
+            {
+                //copy the data from the database to the private data members
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                mUsername = Convert.ToString(DB.DataTable.Rows[0]["Username"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
+                mRole = Convert.ToString(DB.DataTable.Rows[0]["Role"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                return false;
+            }
         }
     }
 }
