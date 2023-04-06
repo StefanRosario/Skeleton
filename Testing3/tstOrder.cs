@@ -109,17 +109,15 @@ namespace Testing3
             //assign the data to the property
             Int32 CostumerID = 21;
             String ShippingAddress = "Narborough Road";
-            Decimal TotalCost = 1;
+            decimal TotalCost = 1;
             DateTime OrderDate = Convert.ToDateTime("30/11/2022");
-            Int32 OrderID = 22;
+            Int32 OrderID = 1;
+            Boolean IsShipped = true;
 
 
             //invoke the method
             Found = AnOrder.Find(CostumerID);
-            Found = AnOrder.Find(ShippingAddress);
-            Found = AnOrder.Find(TotalCost);
-            Found = AnOrder.Find(OrderDate);
-            Found = AnOrder.Find(OrderID);
+          
 
 
             //test to see if the two values are the same
@@ -180,7 +178,7 @@ namespace Testing3
             //boolean variable to record if data OK
             Boolean OK = true;
             //assign the data to the property
-            Int32 TotalCost = 1;
+            decimal TotalCost = 1;
             //invoke the method
             Found = AnOrder.Find(TotalCost);
             //check the Costumer ID
@@ -202,7 +200,7 @@ namespace Testing3
             //boolean variable to record if data OK
             Boolean OK = true;
             //assign the data to the property
-            Int32 OrderDate = 21;
+            DateTime OrderDate = Convert.ToDateTime("30/11/2022");
             //invoke the method
             Found = AnOrder.Find(OrderDate);
             //check the Costumer ID
@@ -223,17 +221,40 @@ namespace Testing3
             //boolean variable to record if data OK
             Boolean OK = true;
             //assign the data to the property
-            Int32 OrderID = 22;
+            Int32 OrderID = 1;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the Costumer ID
-            if (AnOrder.OrderID != 21)
+            if (AnOrder.OrderID != 1)
             {
                 OK = false;
             }
             //test to see if the two values are the same
             Assert.IsTrue(OK);
         }
+        
+        [TestMethod]
+        public void TestIsShippedFound()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //create some test data
+            Boolean Found = false;
+            //boolean variable to record if data OK
+            Boolean OK = true;
+            //assign the data to the property
+            Int32 isShipped = 1;
+            //invoke the method
+            Found = AnOrder.Find(isShipped);
+            //check the Costumer ID
+            if (AnOrder.IsEnabled != true)
+            {
+                OK = false;
+            }
+            //test to see if the two values are the same
+            Assert.IsTrue(OK);
+        }
+
 
     }
 }
