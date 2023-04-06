@@ -34,29 +34,16 @@ namespace ClassLibrary
                 mOrderID = value;
             }
         }
-        public DateTime DateAdded
-        {
+     
+        public DateTime OrderDate {
             get
             {
-                //this line of code sends data out of the property
                 return mOrderDate;
             }
 
             set
             {
-                //this line of code allows data into the property
                 mOrderDate = value;
-            }
-        }
-        public DateTime OrderDate {
-            get
-            {
-                return OrderDate;
-            }
-
-            set
-            {
-                OrderDate = value;
             }
         }
         public string ShippingAddress
@@ -116,7 +103,12 @@ namespace ClassLibrary
         public bool Find(int costumerID)
         {
             mCostumerID = 21;
-           
+            mOrderID = 1;
+            mIsShipped = true;
+            mOrderDate = Convert.ToDateTime("30/11/2022");
+            mShippingAddress = "Narborough Road";
+            mTotalCost = 1;
+            
             //always return true
             return true;
         }
