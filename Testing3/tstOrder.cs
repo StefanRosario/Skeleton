@@ -47,7 +47,7 @@ namespace Testing3
 
         }
         [TestMethod]
-        public void OrderDate()
+        public void OrderDateOK()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
