@@ -35,7 +35,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
             //create some test data
-            string TestData = "johnsmith";
+            string TestData = "miguelcorachea";
             //assign the data to the property
             AStaff.Username = TestData;
             //test to see if the two values are the same
@@ -48,7 +48,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
             //create some test data
-            string TestData = "password123";
+            string TestData = "abcd123";
             //assign the data to the property
             AStaff.Password = TestData;
             //test to see if the two values are the same
@@ -61,7 +61,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
             //create some test data
-            string TestData = "Manager";
+            string TestData = "Customer Manager";
             //assign the data to the property
             AStaff.Role = TestData;
             //test to see if the two values are the same
@@ -163,7 +163,7 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 21;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check the property
@@ -229,7 +229,7 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 21;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check the property
