@@ -107,16 +107,16 @@ namespace Testing3
             //create some test data
             Boolean Found = false;
             //assign the data to the property
-            Int32 CostumerID = 21;
+            Int32 OrderID = 21;
             String ShippingAddress = "Narborough Road";
             decimal TotalCost = 1;
             DateTime OrderDate = Convert.ToDateTime("30/11/2022");
-            Int32 OrderID = 1;
+            Int32 CostumerID = 1;
             Boolean IsShipped = true;
 
 
             //invoke the method
-            Found = AnOrder.Find(CostumerID);
+            Found = AnOrder.Find(OrderID);
           
 
 
@@ -135,11 +135,11 @@ namespace Testing3
             //boolean variable to record if data OK
             Boolean OK = true;
             //assign the data to the property
-            Int32 CostumerID = 21;
+            Int32 CostumerID = 1;
             //invoke the method
             Found = AnOrder.Find(CostumerID);
             //check the Costumer ID
-            if (AnOrder.CostumerID != 21)
+            if (AnOrder.CostumerID != 1)
             {
                 OK = false;
             }
