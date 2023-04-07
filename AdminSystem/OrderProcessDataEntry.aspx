@@ -17,7 +17,7 @@
         <asp:TextBox ID="txtOrderDate" runat="server" style="z-index: 1; left: 109px; top: 97px; position: absolute; height: 22px;"></asp:TextBox>
         <asp:Label ID="lblTotalCost" runat="server" style="z-index: 1; left: 16px; top: 141px; position: absolute; right: 432px; width: 70px" Text="TotalCost"></asp:Label>
         <asp:TextBox ID="txtTotalCost" runat="server" style="z-index: 1; left: 108px; top: 140px; position: absolute"></asp:TextBox>
-        <asp:Label ID="lblShippingAddress" runat="server" style="z-index: 1; left: 7px; top: 19px; position: absolute; width: 70px" Text="Shipping Address"></asp:Label>
+        <asp:Label ID="lblShippingAddress" runat="server" style="z-index: 1; left: 8px; top: 19px; position: absolute; width: 70px; right: 826px;" Text="Shipping Address"></asp:Label>
         <asp:TextBox ID="txtShppingAddress" runat="server" style="z-index: 1; top: 25px; position: absolute; left: 113px"></asp:TextBox>
         <asp:CheckBox ID="chkShipped" runat="server" style="z-index: 1; left: 12px; top: 252px; position: absolute" Text="Shipped" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 18px; top: 298px; position: absolute" Text="[lblError]"></asp:Label>
@@ -26,6 +26,7 @@
         <p>
 &nbsp;<asp:Label ID="lblOrderId" runat="server" style="z-index: 1; left: 14px; top: 182px; position: absolute; height: 20px; width: 70px; right: 598px" Text="OrderID"></asp:Label>
         </p>
+        <asp:Button ID="BtnFind" runat="server" OnClick="BtnFind_Click" style="z-index: 1; left: 273px; top: 179px; position: absolute" Text="Find" />
     </form>
 </body>
 </html>

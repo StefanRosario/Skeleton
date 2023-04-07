@@ -34,8 +34,9 @@ namespace ClassLibrary
                 mOrderID = value;
             }
         }
-     
-        public DateTime OrderDate {
+
+        public DateTime OrderDate
+        {
             get
             {
                 return mOrderDate;
@@ -100,44 +101,39 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int costumerID)
+        public bool Find(int OrderID)
         {
-            mCostumerID = 21;
-            mOrderID = 1;
-            mIsShipped = true;
-            mOrderDate = Convert.ToDateTime("30/11/2022");
-            mShippingAddress = "Narborough Road";
-            mTotalCost = 1;
-            
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address no to search for
+            DB.AddParameter("@OrderID", OrderID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrderProcess_FilterByOrderID");
+            //if one record is found (there should be either one or zero!)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
+                mCostumerID = Convert.ToInt32(DB.DataTable.Rows[0]["CostumerID"]);
+                mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
+                mTotalCost = Convert.ToDecimal(DB.DataTable.Rows[0]["TotalCost"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mIsShipped = Convert.ToBoolean(DB.DataTable.Rows[0]["Shipped"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                return false;
+            }
+
+
         }
 
-        public bool Find(string shippingAddress)
-        {
-            mShippingAddress = "Narborough Road";
-            //always return true
-            return true;
-        }
-
-        public bool Find(decimal totalCost)
-        {
-            mTotalCost = 1;
-            return true;
-        }
-
-        public bool Find(DateTime orderDate)
-        {
-
-            mOrderDate = Convert.ToDateTime("30/11/2022");
-            //always return true
-            return true;
-        }
-
-
-
+        
     }
-    }
+}
     
 
     
