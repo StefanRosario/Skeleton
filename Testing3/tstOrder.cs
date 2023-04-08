@@ -52,7 +52,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data
-            DateTime TestData = DateTime.Now.Date;
+            DateTime TestData = Convert.ToDateTime("22/02/2023");
             //assign the data to the property
             AnOrder.OrderDate = TestData;
             //test to see if the two values are the same
@@ -65,7 +65,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data
-            Decimal TestData = 1;
+            Decimal TestData = Convert.ToDecimal(65.00);
             //assign the data to the property
             AnOrder.TotalCost = TestData;
             //test to see if the 2 values are the same
@@ -79,7 +79,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data
-            Boolean TestData = true;
+            Boolean TestData = false;
             //assign the data to the property
             AnOrder.IsEnabled = TestData;
             //test to see if the two values are the same
@@ -92,7 +92,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data
-            string TestData = "Narborough Road";
+            string TestData = "60, Finsubry road, Leicester, LE2 6FU";
             //assign the data to the property
             AnOrder.ShippingAddress = TestData;
             //test to see if the two values are the same
@@ -107,12 +107,8 @@ namespace Testing3
             //create some test data
             Boolean Found = false;
             //assign the data to the property
-            Int32 OrderID = 21;
-            String ShippingAddress = "Narborough Road";
-            decimal TotalCost = 1;
-            DateTime OrderDate = Convert.ToDateTime("30/11/2022");
-            Int32 CostumerID = 1;
-            Boolean IsShipped = true;
+            Int32 OrderID = 1;
+            
 
 
             //invoke the method
@@ -135,9 +131,9 @@ namespace Testing3
             //boolean variable to record if data OK
             Boolean OK = true;
             //assign the data to the property
-            Int32 CostumerID = 1;
+            Int32 OrderID = 1;
             //invoke the method
-            Found = AnOrder.Find(CostumerID);
+            Found = AnOrder.Find(OrderID);
             //check the Costumer ID
             if (AnOrder.CostumerID != 1)
             {
@@ -156,11 +152,11 @@ namespace Testing3
             //boolean variable to record if data OK
             Boolean OK = true;
             //assign the data to the property
-            String ShippingAddress = "Narborough Road";
+            Int32 OrderID = 1;
             //invoke the method
-            Found = AnOrder.Find(ShippingAddress);
+            Found = AnOrder.Find(OrderID);
             //check the Costumer ID
-            if (AnOrder.ShippingAddress != ShippingAddress)
+            if (AnOrder.ShippingAddress != "60, Finsubry road, Leicester, LE2 6FU")
             {
                 OK = false;
             }
@@ -178,11 +174,11 @@ namespace Testing3
             //boolean variable to record if data OK
             Boolean OK = true;
             //assign the data to the property
-            decimal TotalCost = 1;
+            Int32 OrderID = 1;
             //invoke the method
-            Found = AnOrder.Find(TotalCost);
+            Found = AnOrder.Find(OrderID);
             //check the Costumer ID
-            if (AnOrder.TotalCost != 1)
+            if (AnOrder.TotalCost != Convert.ToDecimal(65.00))
             {
                 OK = false;
             }
@@ -190,27 +186,7 @@ namespace Testing3
             Assert.IsTrue(OK);
         }
 
-        [TestMethod]
-        public void TestOrderDateFound()
-        {
-            //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //create some test data
-            Boolean Found = false;
-            //boolean variable to record if data OK
-            Boolean OK = true;
-            //assign the data to the property
-            DateTime OrderDate = Convert.ToDateTime("30/11/2022");
-            //invoke the method
-            Found = AnOrder.Find(OrderDate);
-            //check the Costumer ID
-            if (AnOrder.OrderDate != Convert.ToDateTime("30/11/2022"))
-            {
-                OK = false;
-            }
-            //test to see if the two values are the same
-            Assert.IsTrue(OK);
-        }
+        
         [TestMethod]
         public void TestOrderIDFound()
         {
@@ -243,11 +219,33 @@ namespace Testing3
             //boolean variable to record if data OK
             Boolean OK = true;
             //assign the data to the property
-            Int32 isShipped = 1;
+            Int32 OrderID = 1;
             //invoke the method
-            Found = AnOrder.Find(isShipped);
+            Found = AnOrder.Find(OrderID);
             //check the Costumer ID
-            if (AnOrder.IsEnabled != true)
+            if (AnOrder.IsEnabled != false)
+            {
+                OK = false;
+            }
+            //test to see if the two values are the same
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderDateFound()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //create some test data
+            Boolean Found = false;
+            //boolean variable to record if data OK
+            Boolean OK = true;
+            //assign the data to the property
+            Int32 OrderID = 1;
+            //invoke the method
+            Found = AnOrder.Find(OrderID);
+            //check the Costumer ID
+            if (AnOrder.OrderDate != Convert.ToDateTime("22/02/2023"))
             {
                 OK = false;
             }
