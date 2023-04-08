@@ -103,37 +103,33 @@ namespace ClassLibrary
 
         public bool Find(int OrderID)
         {
-            //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
-            //add the parameter for the address no to search for
             DB.AddParameter("@OrderID", OrderID);
-            //execute the stored procedure
-            DB.Execute("sproc_tblOrderProcess_FilterByOrderID");
-            //if one record is found (there should be either one or zero!)
+            DB.Execute("sproc_OrderProcess_FilterByOrderID");
+
             if (DB.Count == 1)
             {
-                //copy the data from the database to the private data members
+
                 mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
                 mCostumerID = Convert.ToInt32(DB.DataTable.Rows[0]["CostumerID"]);
-                mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
-                mTotalCost = Convert.ToDecimal(DB.DataTable.Rows[0]["TotalCost"]);
                 mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
-                mIsShipped = Convert.ToBoolean(DB.DataTable.Rows[0]["Shipped"]);
-                //return that everything worked OK
+                mTotalCost = Convert.ToDecimal(DB.DataTable.Rows[0]["TotalCost"]);
+                mIsShipped = Convert.ToBoolean(DB.DataTable.Rows[0]["IsShipped"]);
+                mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
+
                 return true;
             }
-            //if no record was found
+
             else
             {
                 return false;
             }
-
-
         }
-
-        
     }
 }
+    
+
+
     
 
     
