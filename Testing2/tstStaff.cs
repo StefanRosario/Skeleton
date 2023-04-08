@@ -14,7 +14,7 @@ namespace Testing2
             clsStaff AStaff = new clsStaff();
             //test to see that it exists
             Assert.IsNotNull(AStaff);
-            }
+        }
 
         [TestMethod]
         public void StaffIDPropertyOK()
