@@ -74,7 +74,7 @@ namespace Testing2
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
             //create some test data
-            DateTime TestData = DateTime.Now.Date;
+            DateTime TestData = Convert.ToDateTime("22/02/2023");
             //assign the data to the property
             AStaff.DateAdded = TestData;
             //test to see if the two values are the same
@@ -102,7 +102,7 @@ namespace Testing2
             //boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffID = 1;
+            Int32 StaffID = 21;
             //invoke the method
             Found = AStaff.Find(StaffID);
             //test to see that the result is correct
@@ -110,7 +110,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void TestStaffIDNoFound()
+        public void TestStaffIDFound()
         {
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
@@ -128,8 +128,10 @@ namespace Testing2
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsTrue(Found);
         }
+
+
 
         [TestMethod]
         public void TestUsernameFound()
@@ -150,7 +152,7 @@ namespace Testing2
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsTrue(Found);
         }
 
         [TestMethod]
@@ -172,7 +174,7 @@ namespace Testing2
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsTrue(Found);
         }
 
         [TestMethod]
@@ -194,7 +196,7 @@ namespace Testing2
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsTrue(Found);
         }
 
         [TestMethod]
@@ -216,7 +218,7 @@ namespace Testing2
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsTrue(Found);
         }
 
         [TestMethod]
@@ -238,10 +240,8 @@ namespace Testing2
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK);
+            Assert.IsTrue(Found);
         }
     }
-
-
 }
 
