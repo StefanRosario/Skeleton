@@ -32,16 +32,16 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void CostumerIDPropertyOK()
+        public void CustomerIDPropertyOK()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data
             Int32 TestData = 1;
             //assign the data to the property
-            AnOrder.CostumerID = TestData;
+            AnOrder.CustomerID = TestData;
             //test to see if the 2 values are the same
-            Assert.AreEqual(AnOrder.CostumerID, TestData);
+            Assert.AreEqual(AnOrder.CustomerID, TestData);
 
 
 
@@ -74,16 +74,16 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void IsShippedOK()
+        public void ShippedOK()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data
             Boolean TestData = false;
             //assign the data to the property
-            AnOrder.IsEnabled = TestData;
+            AnOrder.Shipped = TestData;
             //test to see if the two values are the same
-            Assert.AreEqual(AnOrder.IsEnabled, TestData);
+            Assert.AreEqual(AnOrder.Shipped, TestData);
         }
 
         [TestMethod]
@@ -122,7 +122,7 @@ namespace Testing3
 
 
         [TestMethod]
-        public void TestCostumerIDFound()
+        public void TestCustomerIDFound()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -135,7 +135,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the Costumer ID
-            if (AnOrder.CostumerID != 1)
+            if (AnOrder.CustomerID != 1)
             {
                 OK = false;
             }
@@ -210,7 +210,7 @@ namespace Testing3
         }
         
         [TestMethod]
-        public void TestIsShippedFound()
+        public void TestShippedFound()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -223,7 +223,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the Costumer ID
-            if (AnOrder.IsEnabled != false)
+            if (AnOrder.Shipped != false)
             {
                 OK = false;
             }
