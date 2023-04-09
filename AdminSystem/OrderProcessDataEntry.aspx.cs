@@ -18,15 +18,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create new insatance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //capture the OrderID
-        AnOrder.ShippingAddress = txtShppingAddress.Text;
-      
-       
+        AnOrder.ShippingAddress = txtShippingAddress.Text;
+
+
 
         //Store Order int the session Object
         Session["An Order"] = AnOrder;
         //navigate to the viewer page
         Response.Redirect("OrderProcessViewer.aspx");
-    
+
         {
 
         }
@@ -35,21 +35,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void BtnFind_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
+
         Int32 OrderID;
+
         Boolean Found = false;
 
         OrderID = Convert.ToInt32(txtOrderID.Text);
         Found = AnOrder.Find(OrderID);
         if (Found == true)
         {
-            txtShppingAddress.Text = AnOrder.ShippingAddress;
-            txtCostumerID.Text = AnOrder.CostumerID;
-            txtOrderDate.Text = AnOrder.OrderDate.ToString;
-            txtTotalCost.Text = AnOrder.TotalCost;
-            chkShipped.Checked = AnOrder.IsEnabled;
+            txtOrderID.Text = AnOrder.OrderID.ToString();
+            txtShippingAddress.Text = AnOrder.ShippingAddress;
+            txtCustomerID.Text = AnOrder.CustomerID.ToString();
+            txtOrderDate.Text = AnOrder.OrderDate.ToString();
+            txtTotalCost.Text = AnOrder.TotalCost.ToString();
+            chkShipped.Checked = AnOrder.Shipped;
 
 
         }
     }
+
+    protected void chkShipped_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
 }
+
    
