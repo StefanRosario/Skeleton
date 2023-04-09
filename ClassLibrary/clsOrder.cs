@@ -5,11 +5,11 @@ namespace ClassLibrary
     public class clsOrder
     {
         //private data member for the address no property
-        private Int32 mCostumerID;
+        private Int32 mCustomerID;
         private string mShippingAddress;
         private DateTime mOrderDate;
         private decimal mTotalCost;
-        private Boolean mIsShipped;
+        private Boolean mShipped;
         private Int32 mOrderID;
 
 
@@ -58,18 +58,18 @@ namespace ClassLibrary
                 mShippingAddress = value;
             }
         }
-        public int CostumerID
+        public int CustomerID
         {
             get
             {
                 //this line of code sends data out of the property
-                return mCostumerID;
+                return mCustomerID;
             }
 
             set
             {
                 //this line of code allows data into the property
-                mCostumerID = value;
+                mCustomerID = value;
             }
         }
         public decimal TotalCost
@@ -86,18 +86,18 @@ namespace ClassLibrary
                 mTotalCost = value;
             }
         }
-        public bool IsEnabled
+        public bool Shipped
         {
             get
             {
                 //this line of code sends data out of the property
-                return mIsShipped;
+                return mShipped;
             }
 
             set
             {
                 //this line of code allows data into the property
-                mIsShipped = value;
+                mShipped = value;
             }
         }
 
@@ -111,10 +111,10 @@ namespace ClassLibrary
             {
 
                 mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
-                mCostumerID = Convert.ToInt32(DB.DataTable.Rows[0]["CostumerID"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
                 mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
                 mTotalCost = Convert.ToDecimal(DB.DataTable.Rows[0]["TotalCost"]);
-                mIsShipped = Convert.ToBoolean(DB.DataTable.Rows[0]["IsShipped"]);
+                mShipped = Convert.ToBoolean(DB.DataTable.Rows[0]["Shipped"]);
                 mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
 
                 return true;
