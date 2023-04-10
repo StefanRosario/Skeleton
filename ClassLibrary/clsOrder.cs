@@ -125,6 +125,20 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(object customerID, object orderDate, object totalCostProperty, object shippingAddress)
+        {
+            return "";
+
+
+
+            
+        }
+
+
+
+
+
     }
 }
     
