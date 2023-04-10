@@ -21,7 +21,7 @@
         <asp:Label ID="IblStaffID" runat="server" Text="Staff ID" width="48px"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtStaffID" runat="server" Height="19px" width="48px"></asp:TextBox>
-        <asp:Button ID="Find" runat="server" Text="Find" />
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         <p id="Form2">
             <asp:Label ID="IblUsername" runat="server" Text="Username" width="48px" height="19px"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -46,7 +46,7 @@
             <asp:CheckBox ID="chkActive" runat="server" Text="Active" OnCheckedChanged="chkActive_CheckedChanged" />
         </p>
         <p>
-            <asp:Label ID="IblError" runat="server"></asp:Label>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />

@@ -116,7 +116,7 @@ namespace ClassLibrary
             if (Username.Length == 0)
             {
                 //record the error
-                Error = Error + "The Username may not be blank : ";
+                Error = Error + "The Username may be blank : ";
             }
             //if the Username is greater than 50 characters
             if (Username.Length > 50)
@@ -150,7 +150,7 @@ namespace ClassLibrary
             if (Password.Length ==0)
             {
                 //record the error
-                Error = Error + "The Password may not be blank : ";
+                Error = Error + "The Password may be blank : ";
             }
             //if the Password is too long
             if (Password.Length > 50)
@@ -162,7 +162,7 @@ namespace ClassLibrary
             if (Role.Length == 0)
             {
                 //record the error
-                Error = Error + "The Role may not be blank ; ";
+                Error = Error + "The Role may be blank ; ";
             }
             //if the Role is too long
             if (Role.Length > 50)
