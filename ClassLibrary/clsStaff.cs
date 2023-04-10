@@ -106,5 +106,71 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid(string Username, string Password, string Role, string DateAdded)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the Username is blank
+            if (Username.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Username may not be blank : ";
+            }
+            //if the Username is greater than 50 characters
+            if (Username.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Username must be less than 50 characters : ";
+            }
+
+            try
+            {
+                //copy the DateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(DateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+            //is the Password blank
+            if (Password.Length ==0)
+            {
+                //record the error
+                Error = Error + "The Password may not be blank : ";
+            }
+            //if the Password is too long
+            if (Password.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Password must be less than 50 characters : ";
+            }
+            //is the Role blank
+            if (Role.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Role may not be blank ; ";
+            }
+            //if the Role is too long
+            if (Role.Length > 50)
+            {
+                Error = Error + "The Role must be less than 50 characters : ";
+            }
+            //return any error messages
+            return Error;
+        }
     }
 }
