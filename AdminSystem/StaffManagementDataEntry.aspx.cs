@@ -10,6 +10,40 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void btnOK_Click(object sender, EventArgs e)
     {
+        //Create a new instance of clsStaff
+        clsStaff AStaff = new clsStaff();
+        //Capture the Username 
+        string Username = txtUsername.Text;
+        //Capture the Password
+        string Password = txtPassword.Text;
+        //Capture the Role
+        string Role = txtRole.Text;
+        //Capture the DateAdded
+        string DateAdded = txtDateAdded.Text;
+        //Variable to store any error messages
+        string Error = "";
+        //Validate the data
+        Error = AStaff.Valid(Username, Password, Role, DateAdded);
+        if (Error == "")
+        {
+            //Capture the Username
+            AStaff.Username = Username;
+            //Capture the Password
+            AStaff.Password = Password;
+            //Capture the Role
+            AStaff.Role = Role;
+            //Capture DateAdded
+            AStaff.DateAdded = Convert.ToDateTime(DateAdded);
+            //Store the username in the session object
+            Session["AStaff"] = AStaff;
+            //Navigate to the viewer page
+            Response.Redirect("StaffManagementViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
 
     }
 
@@ -23,7 +57,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    protected void Find_Click(object sender, EventArgs e)
+    protected void btnFind_Click(object sender, EventArgs e)
     {
         //Create am instance of the address class
         clsStaff AStaff = new clsStaff();
@@ -39,23 +73,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Found == true)
         {
             //Display the values of the properties in the form
-            txtUsername.Text = AStaff.Username;
-            txtPassword.Text = AStaff.Password;
-            txtRole.Text = AStaff.Role;
+            txtStaffID.Text = AStaff.StaffID.ToString();
+            txtUsername.Text = AStaff.Username.ToString();
+            txtPassword.Text = AStaff.Password.ToString();
+            txtRole.Text = AStaff.Role.ToString();
             txtDateAdded.Text = AStaff.DateAdded.ToString();
             chkActive.Checked = AStaff.Active;
         }
-    }
 
-    protected void txtUsername_TextChanged(object sender, EventArgs e)
-    {
-        //Create a new instance of clsStaff
-        clsStaff AStaff = new clsStaff();
-        //Capture the Username and password
-        AStaff.Username = txtUsername.Text;
-        //Store the username in the session object
-        Session["AStaff"] = AStaff;
-        //Navigate to the viewer page
-        Response.Redirect("StaffManagementViewer.aspx");
     }
 }
