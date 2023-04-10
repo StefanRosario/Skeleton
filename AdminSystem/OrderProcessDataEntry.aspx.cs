@@ -55,10 +55,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-    protected void chkShipped_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
 }
 
    
