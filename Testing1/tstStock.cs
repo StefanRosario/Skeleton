@@ -1,14 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-
-
-
-namespace Testing1
+﻿namespace Testing1
 {
     [TestClass]
     public class tstStockManagement
-    {
-        [TestMethod]
+    {   [TestMethod]
         public void AvailableOK()
         {
 
