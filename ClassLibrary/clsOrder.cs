@@ -126,22 +126,53 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(object customerID, object orderDate, object totalCostProperty, object shippingAddress)
+        public string Valid(string CustomerID, string OrderDate, string TotalCost, string ShippingAddress)
         {
-            return "";
+            String Error = "";
+            DateTime DateTemp;
+            if (CustomerID.Length == 0)
+            {
+                Error = Error + "The customerID may not be blank : ";
+
+
+            }
+
+
+            if (CustomerID.Length > 50)
+            {
+                Error = Error + "The customerID must be less than 50 characters : ";
+            }
+
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(OrderDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //return any error messages
+                 Error = Error + "The date is not a valid date : ";
+            }
+
+            return Error;
 
 
 
-            
         }
-
-
-
-
-
     }
 }
-    
+
 
 
     
