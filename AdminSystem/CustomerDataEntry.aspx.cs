@@ -24,4 +24,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("CustomerViewer.aspx");
         
     }
+
+    protected void TextBox3_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }

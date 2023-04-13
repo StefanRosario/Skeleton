@@ -112,10 +112,10 @@ namespace Testing4
             //Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //Create some test data to use with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerNo = 1;
             //Invoke the method
-            Found = ACustomer.Find(CustomerId);
-            //Check the StaffID
+            Found = ACustomer.Find(CustomerNo);
+            //Check the Customerid
             if (ACustomer.CustomerId != 21)
             {
                 OK = false;
@@ -124,21 +124,28 @@ namespace Testing4
             Assert.IsTrue(Found);
         }
             
-        public void TestAddressNoFound()
+        public void TestCustomerNoFound()
         {
             clsCustomer ACustomer = new clsCustomer();
             //Boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable records if datas data is ok
             Boolean OK = true;
-
-
-            
-            Int32 CustomerId = 21;
+            //create test data to use in the method
+            Int32 CustomerNo = 21;
             //invoke the method
+            Found = ACustomer.Find(CustomerNo);
+            //checks address no.
+            if (ACustomer.CustomerId != 21)
+            {
 
+                OK = false;
 
+            }
+            //test to see if results correct 
+            Assert.IsTrue(OK);
         }
 
+        
     }
 }
