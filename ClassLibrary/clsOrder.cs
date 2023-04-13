@@ -164,17 +164,34 @@ namespace ClassLibrary
                 //return any error messages
                  Error = Error + "The date is not a valid date : ";
             }
-
+            //is the Password blank
+            if (TotalCost.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Password may be blank : ";
+            }
+            //if the Password is too long
+            if (TotalCost.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Password must be less than 50 characters : ";
+            }
+            //is the Role blank
+            if (ShippingAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The ShippingAddress may be blank ; ";
+            }
+            //if the Role is too long
+            if (ShippingAddress.Length > 50)
+            {
+                Error = Error + "The ShippingAddress must be less than 50 characters : ";
+            }
+            //return any error messages
             return Error;
-
-
-
         }
     }
 }
 
 
 
-    
-
-    
