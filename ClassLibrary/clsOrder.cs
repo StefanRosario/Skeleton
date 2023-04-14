@@ -168,19 +168,19 @@ namespace ClassLibrary
             if (TotalCost.Length == 0)
             {
                 //record the error
-                Error = Error + "The Password may be blank : ";
+                Error = Error + "The total cost may be blank : ";
             }
             //if the Password is too long
             if (TotalCost.Length > 50)
             {
                 //record the error
-                Error = Error + "The Password must be less than 50 characters : ";
+                Error = Error + "The Total Cost must be less than 50 characters : ";
             }
             //is the Role blank
             if (ShippingAddress.Length == 0)
             {
                 //record the error
-                Error = Error + "The ShippingAddress may be blank ; ";
+                Error = Error + "The shipping address may  be blank ; ";
             }
             //if the Role is too long
             if (ShippingAddress.Length > 50)
