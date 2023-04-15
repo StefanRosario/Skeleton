@@ -8,6 +8,8 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 StaffID;
     protected void btnOK_Click(object sender, EventArgs e)
     {
         //Create a new instance of clsStaff
@@ -26,6 +28,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AStaff.Valid(Username, Password, Role, DateAdded);
         if (Error == "")
         {
+            //capture the StaffID
+            AStaff.StaffID = StaffID;
             //Capture the Username
             AStaff.Username = Username;
             //Capture the Password
@@ -34,10 +38,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStaff.Role = Role;
             //Capture DateAdded
             AStaff.DateAdded = Convert.ToDateTime(DateAdded);
-            //Store the username in the session object
-            Session["AStaff"] = AStaff;
-            //Navigate to the viewer page
-            Response.Redirect("StaffManagementViewer.aspx");
+            //capture active
+            AStaff.Active = chkActive.Checked;
+            //create a new instance of the address collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+
+            //if this is a new record i.e. StaffID = -1 then add the data
+            if (StaffID == -1)
+            {
+                //set the ThisStaff property
+                StaffList.ThisStaff = AStaff;
+                //add the new record
+                StaffList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                StaffList.ThisStaff.Find(StaffID);
+                //set the ThisStaff property
+                StaffList.ThisStaff = AStaff;
+                //update the record
+                StaffList.Update();
+            }
+            //redirect back to the listpage
+            Response.Redirect("StaffManagementList.aspx");
         }
         else
         {
