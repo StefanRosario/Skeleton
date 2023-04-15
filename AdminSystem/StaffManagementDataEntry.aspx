@@ -20,27 +20,27 @@
         </div>
         <asp:Label ID="IblStaffID" runat="server" Text="Staff ID" width="48px"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtStaffID" runat="server" Height="19px" width="48px"></asp:TextBox>
+        <asp:TextBox ID="txtStaffID" runat="server" Height="19px" width="120px"></asp:TextBox>
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         <p id="Form2">
             <asp:Label ID="IblUsername" runat="server" Text="Username" width="48px" height="19px"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtUsername" runat="server" width="48px" height="19px"></asp:TextBox>
+            <asp:TextBox ID="txtUsername" runat="server" width="120px" height="19px"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="IblPassword" runat="server" Text="Password" width="48px" height="19px"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtPassword" runat="server" width="48px" height="19px"></asp:TextBox>
+            <asp:TextBox ID="txtPassword" runat="server" width="120px" height="19px"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="IblRole" runat="server" Text="Role" width="48px" height="19px"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtRole" runat="server" width="48px" height="19px"></asp:TextBox>
+            <asp:TextBox ID="txtRole" runat="server" width="120px" height="19px"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="IblDateAdded" runat="server" Text="Date Added" width="48px" height="19px"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtDateAdded" runat="server" width="48px" height="19px"></asp:TextBox>
+            <asp:TextBox ID="txtDateAdded" runat="server" width="120px" height="19px"></asp:TextBox>
         </p>
         <p>
             <asp:CheckBox ID="chkActive" runat="server" Text="Active" OnCheckedChanged="chkActive_CheckedChanged" />
