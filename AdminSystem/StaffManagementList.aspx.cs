@@ -98,4 +98,34 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record to delete from the list";
         }
     }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Staff Collection
+        clsStaffCollection Staffs = new clsStaffCollection();
+        Staffs.ReportByRole(txtFilter.Text);
+        lstStaffList.DataSource = Staffs.StaffList;
+        //set the name of the primary key
+        lstStaffList.DataValueField = "StaffID";
+        //set the name of the field to disply
+        lstStaffList.DataTextField = "Role";
+        //bind the data to the list
+        lstStaffList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Staff Collection
+        clsStaffCollection Staffs = new clsStaffCollection();
+        Staffs.ReportByRole("");
+        //clear any existing filter to tidy up the interface;
+        txtFilter.Text = "";
+        lstStaffList.DataSource = Staffs.StaffList;
+        //set the name of the primary key
+        lstStaffList.DataValueField = "StaffID";
+        //set the name of the field to disply
+        lstStaffList.DataTextField = "Role";
+        //bind the data to the list
+        lstStaffList.DataBind();
+    }
 }
