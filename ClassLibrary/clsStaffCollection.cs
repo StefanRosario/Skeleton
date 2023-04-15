@@ -50,22 +50,21 @@ namespace ClassLibrary
             }
         }
 
-        public clsStaffCollection()
+        void PopulateArray(clsDataConnection DB)
         {
+            //populates the array list based on the data table in the parameter DB
             //var for the index
             Int32 Index = 0;
             //var to store the record count
-            Int32 RecordCount = 0;
-            //object for data connection
-            clsDataConnection DB = new clsDataConnection();
-            //execute the stored procedure
-            DB.Execute("sproc_StaffManagement_SelectAll");
+            Int32 RecordCount;
             //get the count of records
             RecordCount = DB.Count;
+            //clear the private array list
+            mStaffList = new List<clsStaff>();
             //while there are records to process
             while (Index < RecordCount)
             {
-                //create a blank Staff
+                //create a blank address
                 clsStaff AStaff = new clsStaff();
                 //read in the fields from the current record
                 AStaff.StaffID = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffID"]);
@@ -79,6 +78,16 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
             }
+        }
+
+        public clsStaffCollection()
+        {
+            //object for data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_StaffManagement_SelectAll");
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -122,6 +131,19 @@ namespace ClassLibrary
             DB.AddParameter("@StaffID", mThisStaff.StaffID);
             //execute the stored procedure
             DB.Execute("sproc_StaffManagement_Delete");
+        }
+
+        public void ReportByRole(string Role)
+        {
+            //filters the record based on a full or partial Role
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the Role parameter to the database
+            DB.AddParameter("@Role", Role);
+            //execute the stored procedure
+            DB.Execute("sproc_StaffManagement_FilterByRole");
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
     }
 }
