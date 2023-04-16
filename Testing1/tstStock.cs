@@ -1,9 +1,12 @@
-﻿namespace Testing1
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+namespace TestingStock
 {
     [TestClass]
     public class tstStockManagement
     {   [TestMethod]
-        public void AvailableOK()
+        public void InitialiseOK()
         {
 
             clsStockManagement Stock = new clsStockManagement();
@@ -29,6 +32,11 @@
         {
             public bool Active { get; internal set; }
             public int ProductId { get; internal set; }
+            public int StockCount { get; internal set; }
+            public string ProductName { get; internal set; }
+            public string Description { get; internal set; }
+            public string Category { get; internal set; }
+            public decimal Price { get; internal set; }
         }
 
         public void ProductIdOK()
@@ -74,7 +82,7 @@
         public void DescriptionOK()
         {
 
-            clsStockManagement Stock = new clsStockManagement
+            clsStockManagement Stock = new clsStockManagement();
 
             string TestData = "Black Hoodie with embroidered SB logo";
 
@@ -83,25 +91,25 @@
             Assert.AreEqual(Stock.Description, TestData);
         }
         [TestMethod]
-        public void CatergoryOK()
-        {
+        public void CategoryOK()
+        { 
 
-            clsStockManagement Stock = new clsStockManagement
+            clsStockManagement Stock = new clsStockManagement();
 
             string TestData = "Clothing";
 
-            Stock.Catergory = TestData;
+            Stock.Category = TestData;
 
-            Assert.AreEqual(Stock.Catergory, TestData);
+            Assert.AreEqual(Stock.Category, TestData);
 
         }
         [TestMethod]
         public void PriceOK()
         {
 
-            clsStockManagement Stock = new clsStockManagement
+            clsStockManagement Stock = new clsStockManagement();
 
-            decimal TestData = 34.99;
+            decimal TestData = 34.99m;
 
             Stock.Price = TestData;
 
