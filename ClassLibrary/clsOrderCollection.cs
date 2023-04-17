@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 
 namespace ClassLibrary
@@ -7,6 +8,9 @@ namespace ClassLibrary
     {
         //private data member for this list
         List<clsOrder> mOrderList = new List<clsOrder>();
+        //private data member thisStaff
+        clsOrder mThisOrder = new clsOrder();
+
         public List<clsOrder> OrderList
         {
             get
@@ -32,6 +36,18 @@ namespace ClassLibrary
 
             }
         }
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                //return the private data
+                return mThisOrder;
+            }
+            set
+            {
+                //set the private data
+                mThisOrder = value;
+            }
+        }
     }
 }
-    
