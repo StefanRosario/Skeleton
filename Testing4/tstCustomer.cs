@@ -1,4 +1,5 @@
-﻿using ClassLibrary;
+﻿using Class_Library;
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -112,9 +113,9 @@ namespace Testing4
             //Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //Create some test data to use with the method
-            Int32 CustomerNo = 1;
+            Int32 CustomerId = 1;
             //Invoke the method
-            Found = ACustomer.Find(CustomerNo);
+            Found = ACustomer.Find(CustomerId);
             //Check the Customerid
             if (ACustomer.CustomerId != 21)
             {
@@ -132,9 +133,9 @@ namespace Testing4
             //boolean variable records if datas data is ok
             Boolean OK = true;
             //create test data to use in the method
-            Int32 CustomerNo = 21;
+            Int32 CustomerId = 21;
             //invoke the method
-            Found = ACustomer.Find(CustomerNo);
+            Found = ACustomer.Find(CustomerId);
             //checks address no.
             if (ACustomer.CustomerId != 21)
             {
@@ -147,5 +148,6 @@ namespace Testing4
         }
 
         
+
     }
 }

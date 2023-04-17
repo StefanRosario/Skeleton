@@ -1,63 +1,139 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-using ClassLibrary;
+namespace Class_Library
 
-
-public class clsCustomer
 {
-    public DateTime DateAdded { get; set; }
-    public string FullName { get; set; }
-    public string EmailAddress { get; set; }
-    public string ShippingAddress { get; set; }
-    public DateTime DateDated { get; set; }
-    public DateTime CustomerDate { get; set; }
 
-    public bool Find(int CustomerId)
+
+    public class clsCustomer
     {
+        private bool mActive;
+        private int mCustomerNo;
 
-        //set private data members to test data value 
-        mCustomerNo = 21;
-        DateTime CustomerAdded = Convert.ToDateTime("16/9/2015");
-        //always return true 
-        return true;
-    }
 
-    public class ClsCustomer
-    {
-        //private data member for the address number property 
-        private Int32 mCustomerNo;
-    }
-
-    private Int32 CustomerNo;
-    private int mCustomerNo;
-
-    public Int32 CustomerId
-    {
-        get
+        //private data member for active 
+        private bool Active
         {
-            return mCustomerNo;
-
-        }
-        set
-        {
-            mCustomerNo = value;
-
+            get
+            {
+                //return private data 
+                return mActive;
+            }
+            set
+            {
+                //set private data 
+                mActive = value;
+            }
         }
 
-    }
-
-    private DateTime mCustomerAdded;
-    public DateTime DateAdd
-    {
-        get
+        private Int32 mCustomerId;
+        public Int32 CustomerId
         {
-            return mCustomerAdded;
+            get
+            {
+                return mCustomerId;
+
+
+            }
+            set
+            {
+                //set value of private data memer
+                mCustomerId = value;
+            }
         }
 
-        set
+        private String mFName;
+        public String FName
         {
-            mCustomerAdded = value;
+            get
+            {
+                return mfName;
+
+
+            }
+            set
+            {
+                //set value of private data memer
+                FName = value;
+            }
+        }
+
+        private string mEmail;
+        private string mfName;
+
+        public string Email
+        {
+            get
+            {
+                return mEmail;
+
+
+            }
+            set
+            {
+                //set value of private data memer
+                mEmail = value;
+            }
+        }
+
+       
+
+        private Int32 mPhone;
+        public Int32 Phone
+        {
+            get
+            {
+                return mPhone;
+
+
+            }
+            set
+            {
+                //set value of private data memer
+                mPhone = value;
+            }
+        }
+
+        private string mShippingAddress;
+
+        public string ShippingAddress
+        {
+            get
+            {
+                return mShippingAddress;
+
+            }
+            set
+            {
+                mShippingAddress = value;
+            }
+        }
+
+        private string mDateRegistered;
+
+        public string DateRegistered
+        {
+            get
+            {
+                return mDateRegistered;
+            }
+            set
+            {
+                mDateRegistered = value;
+            }
+        }
+
+        public DateTime CustomerDate { get; set; }
+        public string EmailAddress { get; set; }
+        public string FullName { get; set; }
+        public DateTime DateAdded { get; set; }
+
+        public bool Find(int customerId)
+        {
+            throw new NotImplementedException();
         }
     }
-
 }
