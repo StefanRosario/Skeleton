@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+        clsStock Stock = new clsStock();
+
+        Stock.ProductName = txtProductName.Text;
+
+        Session["Stock"] = Stock;
 
         Response.Redirect("StockDataEntry.aspx");
     }

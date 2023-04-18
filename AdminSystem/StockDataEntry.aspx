@@ -11,7 +11,6 @@
         <div>
         </div>
         <asp:Label ID="TblProductID" runat="server" style="z-index: 1; left: 10px; top: 18px; position: absolute" Text="Product ID" width="69px"></asp:Label>
-        <asp:TextBox ID="txtProductID" runat="server" style="z-index: 1; left: 79px; top: 17px; position: absolute"></asp:TextBox>
         <p>
             <asp:Label ID="lblProductName" runat="server" height="19px" style="z-index: 1; left: 10px; top: 53px; position: absolute; width: 94px" Text="Product Name"></asp:Label>
         </p>
