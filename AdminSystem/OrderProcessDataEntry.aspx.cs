@@ -8,6 +8,7 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -17,13 +18,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //Create a new instance of clsStaff
         clsOrder AnOrder = new clsOrder();
-        //Capture the Username 
+        //Capture the CustomerID 
         string CustomerID = txtCustomerID.Text;
-        //Capture the Password
+        //Capture the ShippingAddress
         string ShippingAddress = txtShippingAddress.Text;
-        //Capture the Role
+        //Capture the TotalCost
         string TotalCost = txtTotalCost.Text;
-        //Capture the DateAdded
+        //Capture the OrderDate
         string OrderDate = txtOrderDate.Text;
         //Variable to store any error messages
         string Error = "";
@@ -31,6 +32,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrder.Valid(CustomerID, ShippingAddress, TotalCost, OrderDate);
         if (Error == "")
         {
+            //capture the StaffID
+            AnOrder.OrderID = OrderID;
             //Capture the Username
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
             //Capture the Password
@@ -39,16 +42,39 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.TotalCost = Convert.ToDecimal(TotalCost);
             //Capture DateAdded
             AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
-            //Store the username in the session object
-            Session["An Order"] = AnOrder;
-            //Navigate to the viewer page
-            Response.Redirect("OrderProcessViewer.aspx");
+            //capture active
+            AnOrder.Shipped = chkShipped.Checked;
+            //create a new instance of the address collection
+            clsOrderCollection OrderList = new clsOrderCollection();
+
+
+            //if this is a new record i.e. StaffID = -1 then add the data
+            if (OrderID == -1)
+            {
+                //set the ThisStaff property
+                OrderList.ThisOrder = AnOrder;
+                //add the new record
+                OrderList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                OrderList.ThisOrder.Find(OrderID);
+                //set the ThisOrder property
+                OrderList.ThisOrder = AnOrder;
+                //update the record
+                OrderList.Update();
+            }
+            //redirect back to the listpage
+            Response.Redirect("OrderProcessList.aspx");
         }
         else
         {
             //display the error message
             lblError.Text = Error;
         }
+
 
     }
 

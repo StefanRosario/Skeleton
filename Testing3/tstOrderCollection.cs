@@ -174,37 +174,37 @@ namespace Testing3
             Assert.IsFalse(Found);
         }
         [TestMethod]
-        public void ReportByTotalCostMethodOK()
+        public void ReportByShippingAddressMethodOK()
         {
             //create an instance of the class containing unfiltered results
             clsOrderCollection AllOrders = new clsOrderCollection();
             //create an instance of the filtered data
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             //apply a blank string (should return all records);
-            FilteredOrders.ReportByTotalCost("");
+            FilteredOrders.ReportByShippingAddress("");
             //test to see that the two values are the same
             Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
         }
         [TestMethod]
-        public void ReportByTotalCoNoneFound()
+        public void ReportByShippingAddressNoneFound()
         {
             //create an instance of the filtered data
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             //apply a TotalCost that doesn't exist
-            FilteredOrders.ReportByTotalCost("65.00");
+            FilteredOrders.ReportByShippingAddress("narborough");
             //test to see that there are no records
             Assert.AreEqual(0, FilteredOrders.Count);
         }
 
         [TestMethod]
-        public void ReportByTotalCostTestDataFound()
+        public void ReportByShippingAddressDataFound()
         {
             //create an instance of the filtered data
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             //var to store outcome
             Boolean OK = true;
             //apply a TotalCost that doesn't exist
-            FilteredOrders.ReportByTotalCost("65.00");
+            FilteredOrders.ReportByShippingAddress("60, Finsubry road, Leicester, LE2 6FU");
             //check that the correct number of records are found
             if (FilteredOrders.Count == 2)
             {

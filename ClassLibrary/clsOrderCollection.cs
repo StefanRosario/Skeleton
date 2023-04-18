@@ -133,15 +133,15 @@ namespace ClassLibrary
             DB.Execute("sproc_OrderProcess_Delete");
         }
 
-        public void ReportByTotalCost(string TotalCost)
+        public void ReportByShippingAddress(string ShippingAddress)
         {
             //filters the record based on a full or partial Role
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //send the Role parameter to the database
-            DB.AddParameter("@TotalCost", TotalCost);
+            DB.AddParameter("@ShippingAddress", ShippingAddress);
             //execute the stored procedure
-            DB.Execute("sproc_OrderProcess_FilterByTotalCost");
+            DB.Execute("sproc_OrderProcess_FilterByShippingAddress");
             //populate the array list with the data table
             PopulateArray(DB);
         }
