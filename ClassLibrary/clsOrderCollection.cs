@@ -66,12 +66,12 @@ namespace ClassLibrary
                 //create a blank address
                 clsOrder AnOrder = new clsOrder();
                 //read in the fields from the current record
-                AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
-                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
-                AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
-                AnOrder.TotalCost = Convert.ToDecimal(DB.DataTable.Rows[0]["TotalCost"]);
-                AnOrder.Shipped = Convert.ToBoolean(DB.DataTable.Rows[0]["Shipped"]);
-                AnOrder.ShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
+                AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
+                AnOrder.TotalCost = Convert.ToDecimal(DB.DataTable.Rows[Index]["TotalCost"]);
+                AnOrder.Shipped = Convert.ToBoolean(DB.DataTable.Rows[Index]["Shipped"]);
+                AnOrder.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
 
                 //add the record to the private data member
                 mOrderList.Add(AnOrder);
