@@ -10,6 +10,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     //variable to store the primary key with page level scope
     Int32 StaffID;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
     protected void btnOK_Click(object sender, EventArgs e)
     {
         //Create a new instance of clsStaff
@@ -43,11 +49,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //create a new instance of the address collection
             clsStaffCollection StaffList = new clsStaffCollection();
 
+            //set the ThisStaff property
+            StaffList.ThisStaff = AStaff;
+
             //if this is a new record i.e. StaffID = -1 then add the data
             if (StaffID == -1)
             {
-                //set the ThisStaff property
-                StaffList.ThisStaff = AStaff;
                 //add the new record
                 StaffList.Add();
             }
@@ -56,12 +63,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 //find the record to update
                 StaffList.ThisStaff.Find(StaffID);
-                //set the ThisStaff property
-                StaffList.ThisStaff = AStaff;
                 //update the record
                 StaffList.Update();
             }
-            //redirect back to the listpage
+
+            //redirect to the staff management list page
             Response.Redirect("StaffManagementList.aspx");
         }
         else
@@ -70,11 +76,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             lblError.Text = Error;
         }
 
+
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        if (Page.Request.UrlReferrer != null)
+        {
+            Response.Redirect(Page.Request.UrlReferrer.ToString());
+        }
+        else
+        {
+            // If there is no previous page, redirect to a default page
+            Response.Redirect("StaffManagementDataEntry.aspx");
+        }
     }
 
     protected void chkActive_CheckedChanged(object sender, EventArgs e)
