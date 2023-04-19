@@ -12,13 +12,19 @@ public partial class _1_List : System.Web.UI.Page
     Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the address to be processed
+        OrderID = Convert.ToInt32(Session["OrderID"]);
         if (IsPostBack == false)
-
         {
-            //display the current data for the record
-            DisplayOrders();
+            //if this is not a new record
+            if (OrderID != -1)
+            {
+                //display the current data for the record
+                DisplayOrders();
+            }
         }
     }
+
 
     void DisplayOrders()
     {
@@ -37,7 +43,12 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void lstOrderList_SelectedIndexChanged(object sender, EventArgs e)
     {
-
+        //if this is the first time the page is displayed
+        if (IsPostBack == false)
+        {
+            //update the list box
+            DisplayOrders();
+        }
     }
 
     protected void BtnAdd_Click(object sender, EventArgs e)
@@ -89,6 +100,37 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record to delete from the list";
         }
 
+    }
+
+    protected void BtnApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Staff Collection
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportByShippingAddress(txtFilter.Text);
+        lstOrderList.DataSource = Orders.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "OrderID";
+        //set the name of the field to disply
+        lstOrderList.DataTextField = "TotalCost";
+        //bind the data to the list
+        lstOrderList.DataBind();
+
+    }
+
+    protected void BtnClear_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Staff Collection
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportByShippingAddress("");
+        //clear any existing filter to tidy up the interface;
+        txtFilter.Text = "";
+        lstOrderList.DataSource = Orders.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "OrderID";
+        //set the name of the field to disply
+        lstOrderList.DataTextField = "ShippingAddress";
+        //bind the data to the list
+        lstOrderList.DataBind();
     }
 }
 
