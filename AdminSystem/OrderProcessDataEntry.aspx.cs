@@ -106,6 +106,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        if (Page.Request.UrlReferrer != null)
+        {
+            Response.Redirect(Page.Request.UrlReferrer.ToString());
+        }
+        else
+        {
+            // If there is no previous page, redirect to a default page
+            Response.Redirect("OrderProcessDataEntry.aspx");
+
+        }
+    }
 }
 
    
