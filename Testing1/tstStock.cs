@@ -1,10 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace TestingStock
 {
     [TestClass]
-    public class tstStock
+    public class tstStockManagement
     {
         string ProductName = "SB Tee";
         string Available = "true";
@@ -12,10 +13,7 @@ namespace TestingStock
         string Category = "Clothing";
         string StockCount = "200";
         string Price = "24.99";
-    }
-    [TestClass]
-    public class tstStockManagement
-    {
+
         [TestMethod]
         public void InitialiseOK()
         {
@@ -49,7 +47,7 @@ namespace TestingStock
             public string Category { get; internal set; }
             public decimal Price { get; internal set; }
 
-            internal string Valid(Action availableOK, Action priceOK, Action categoryOK, Action stockCountOK, Action productNameOK, Action descriptionOK)
+            internal string Valid(string availableOK, string priceOK, string categoryOK, string stockCountOK, string productNameOK, string descriptionOK)
             {
                 return "";
             }
@@ -132,16 +130,129 @@ namespace TestingStock
             Assert.AreEqual(Stock.Price, TestData);
         }
 
+        [TestMethod]
         public void ValidMethodOK()
         {
-            clsStockManagement Stock = new clsStockManagement();
+            clsStock Stock = new clsStock();
 
             String Error = "";
 
-            Error = Stock.Valid(AvailableOK, PriceOK, CategoryOK, StockCountOK, ProductNameOK, DescriptionOK);
+            Error = Stock.Valid(Available, Price, Category, StockCount, ProductName, Description);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductNameMaxMinusOne()
+        {
+            clsStock Stock = new clsStock();
+
+            String Error = "";
+
+            string ProductNameOK = "Extremely Large Product Name for testing XL model";
+
+            Error = Stock.Valid(Available, Price, Category, StockCount, ProductNameOK, Description);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductNameMaxPlusOne()
+        {
+            clsStock Stock = new clsStock();
+
+            String Error = "";
+
+            string ProductNameOK = "Extremely Large Product Name for testing XXXL model";
+
+            Error = Stock.Valid(Available, Price, Category, StockCount, ProductNameOK, Description);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductNameMax()
+        {
+            clsStock Stock = new clsStock();
+
+            String Error = "";
+
+            string ProductNameOK = "Extremely Large Product Name for testing XXL model";
+
+            Error = Stock.Valid(Available, Price, Category, StockCount, ProductNameOK, Description);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductNameMiddle()
+        {
+            clsStock Stock = new clsStock();
+
+            String Error = "";
+
+            string ProductNameOK = "Extremely Large Product N";
+
+            Error = Stock.Valid(Available, Price, Category, StockCount, ProductNameOK, Description);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxPlusOne()
+        {
+            clsStock Stock = new clsStock();
+
+            String Error = "";
+
+            string PriceOK = "54.123";
+
+            Error = Stock.Valid(Available, PriceOK, Category, StockCount, ProductName, Description);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxMinusOne()
+        {
+            clsStock Stock = new clsStock();
+
+            String Error = "";
+
+            string PriceOK = "54.1";
+
+            Error = Stock.Valid(Available, PriceOK, Category, StockCount, ProductName, Description);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMax()
+        {
+            clsStock Stock = new clsStock();
+
+            String Error = "";
+
+            string PriceOK = "54.12";
+
+            Error = Stock.Valid(Available, PriceOK, Category, StockCount, ProductName, Description);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMiddle()
+        {
+            clsStock Stock = new clsStock();
+
+            String Error = "";
+
+            string PriceOK = "545325346.12";
+
+            Error = Stock.Valid(Available, PriceOK, Category, StockCount, ProductName, Description);
 
             Assert.AreEqual(Error, "");
         }
     }
 }
+
 

@@ -126,6 +126,52 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string availableOK, string priceOK, string categoryOK, string stockCountOK, string productNameOK, string descriptionOK)
+        {
+            String Error = "";
+
+            if (productNameOK.Length > 50)
+            {
+                Error = Error + "The product name is longer than 50 characters: ";
+            }
+            if (descriptionOK.Length > 50)
+            {
+                Error = Error + "The description length is longer than 50 characters: ";
+            }
+            try
+            {
+                decimal localPrice = decimal.Parse(priceOK);
+            }
+            catch
+            {
+                Error = Error + "The value entered is not a number: ";
+            }
+
+            string[] localdecimalPrice = priceOK.Split('.');
+            if(localdecimalPrice[1].Length > 2)
+            {
+                Error = Error + "The price contains more values more than 2 decimal places ";
+            }
+            try
+            {
+
+                bool localBool = Convert.ToBoolean(availableOK);
+            }
+            catch
+            {
+                Error = Error + "The value entered is not a boolean: ";
+            }
+            return Error;
+        }
     }
 }
+
+
+
+                    
+
+
+
+
 
