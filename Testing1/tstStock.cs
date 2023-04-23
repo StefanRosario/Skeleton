@@ -4,8 +4,19 @@ using System;
 namespace TestingStock
 {
     [TestClass]
+    public class tstStock
+    {
+        string ProductName = "SB Tee";
+        string Available = "true";
+        string Description = "Black SB Tee";
+        string Category = "Clothing";
+        string StockCount = "200";
+        string Price = "24.99";
+    }
+    [TestClass]
     public class tstStockManagement
-    {   [TestMethod]
+    {
+        [TestMethod]
         public void InitialiseOK()
         {
 
@@ -37,6 +48,11 @@ namespace TestingStock
             public string Description { get; internal set; }
             public string Category { get; internal set; }
             public decimal Price { get; internal set; }
+
+            internal string Valid(Action availableOK, Action priceOK, Action categoryOK, Action stockCountOK, Action productNameOK, Action descriptionOK)
+            {
+                return "";
+            }
         }
 
         public void ProductIdOK()
@@ -92,7 +108,7 @@ namespace TestingStock
         }
         [TestMethod]
         public void CategoryOK()
-        { 
+        {
 
             clsStockManagement Stock = new clsStockManagement();
 
@@ -114,6 +130,17 @@ namespace TestingStock
             Stock.Price = TestData;
 
             Assert.AreEqual(Stock.Price, TestData);
+        }
+
+        public void ValidMethodOK()
+        {
+            clsStockManagement Stock = new clsStockManagement();
+
+            String Error = "";
+
+            Error = Stock.Valid(AvailableOK, PriceOK, CategoryOK, StockCountOK, ProductNameOK, DescriptionOK);
+
+            Assert.AreEqual(Error, "");
         }
     }
 }
