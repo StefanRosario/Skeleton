@@ -30,6 +30,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("StockViewer.aspx");
     }
 
+
     protected void btnFind_Click(object sender, EventArgs e)
     {
         clsStock Stock = new clsStock();
@@ -42,7 +43,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         Found = Stock.Find(ProductID);
 
-        if(Found == true)
+        if (Found == true)
         {
             txtCategory.Text = Stock.Category;
             txtDescription.Text = Stock.Description;
@@ -50,8 +51,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtProductName.Text = Stock.ProductName;
             txtStockCount.Text = Stock.StockCount.ToString();
             chkAvailable.Checked = Stock.Available;
-            
-            
+
+
         }
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StockList.aspx");
     }
 }

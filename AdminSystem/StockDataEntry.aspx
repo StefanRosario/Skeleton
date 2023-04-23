@@ -28,6 +28,7 @@
         </p>
         <p>
             <asp:Label ID="tblCategory" runat="server" style="z-index: 1; left: 10px; top: 129px; position: absolute" Text="Category" height="19px" width="69px"></asp:Label>
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 973px; top: 440px; position: absolute" Text="View Stock" />
         </p>
         <p>
             <asp:CheckBox ID="chkAvailable" runat="server" style="z-index: 1; left: 12px; top: 241px; position: absolute; width: 109px;" Text="Available" height="19px" />
@@ -39,6 +40,8 @@
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 16px; top: 264px; position: absolute; margin-top: 9px" height="19px" width="69px"></asp:Label>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 62px; top: 506px; position: absolute" Text="OK" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 231px; top: 515px; position: absolute" Text="Cancel" />
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>
