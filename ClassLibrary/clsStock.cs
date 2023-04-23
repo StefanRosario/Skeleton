@@ -104,16 +104,28 @@ namespace ClassLibrary
         }
         public bool Find(int ProductID)
         {
-            tProductID = 376;
-            tProductName = "SB Hoodie";
-            tAvailable = true;
-            tCategory = "Clothing";
-            tDescription = "Grey SB Hoodie";
-            tStockCount = 100;
-            tPrice = 54.99m;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@ProductID", ProductID);
+            DB.Execute("sproc_StockManagement_FilterByProductID");
+            if (DB.Count == 1)
+            {
+
+                tProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                tProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
+                tAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
+                tPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                tStockCount = Convert.ToInt32(DB.DataTable.Rows[0]["StockCount"]);
+                tCategory = Convert.ToString(DB.DataTable.Rows[0]["Catergory"]);
+                tDescription = Convert.ToString(DB.DataTable.Rows[0]["Description"]);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
-    
 
