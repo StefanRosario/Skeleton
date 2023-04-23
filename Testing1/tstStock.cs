@@ -1,11 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace TestingStock
 {
     [TestClass]
     public class tstStockManagement
-    {   [TestMethod]
+    {
+        [TestMethod]
         public void InitialiseOK()
         {
 
@@ -37,6 +39,11 @@ namespace TestingStock
             public string Description { get; internal set; }
             public string Category { get; internal set; }
             public decimal Price { get; internal set; }
+
+            internal bool Find(int productID)
+            {
+                return true;
+            }
         }
 
         public void ProductIdOK()
@@ -92,7 +99,7 @@ namespace TestingStock
         }
         [TestMethod]
         public void CategoryOK()
-        { 
+        {
 
             clsStockManagement Stock = new clsStockManagement();
 
@@ -115,6 +122,76 @@ namespace TestingStock
 
             Assert.AreEqual(Stock.Price, TestData);
         }
+
+        [TestMethod]
+
+        public void FindMethodOK()
+
+        {
+            clsStockManagement Stock = new clsStockManagement();
+
+            Boolean Found = false;
+
+            Int32 ProductID = 376;
+
+            Found = Stock.Find(ProductID);
+
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestProductIDFound()
+        {
+           // clsStockManagement Stock = new clsStockManagement();
+            clsStock Stock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 ProductID = 376;
+
+            Found = Stock.Find(ProductID);
+
+            if (Stock.ProductID != 376)
+            {
+                OK = false;
+            }
+
+
+            if (Stock.ProductName != "SB Hoodie")
+            {
+                OK = false;
+            }
+
+            if (Stock.Price != Convert.ToDecimal(54.99))
+            {
+                OK = false;
+            }
+
+            if (Stock.Available != true)
+            {
+                OK = false;
+            }
+
+            if (Stock.Category != "Clothing")
+            {
+                OK = false;
+            }
+
+
+            if (Stock.Description != "Grey SB Hoodie")
+            {
+                OK = false;
+            }
+
+            if (Stock.StockCount != 100)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
+
+
 

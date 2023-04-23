@@ -102,7 +102,18 @@ namespace ClassLibrary
                 tStockCount = value;
             }
         }
+        public bool Find(int ProductID)
+        {
+            tProductID = 376;
+            tProductName = "SB Hoodie";
+            tAvailable = true;
+            tCategory = "Clothing";
+            tDescription = "Grey SB Hoodie";
+            tStockCount = 100;
+            tPrice = 54.99m;
+            return true;
+        }
     }
 }
-
+    
 
