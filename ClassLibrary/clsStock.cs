@@ -15,7 +15,7 @@ namespace ClassLibrary
             }
             set
             {
-                Available = value;
+                tAvailable = value;
             }
         }
 
@@ -29,7 +29,7 @@ namespace ClassLibrary
             }
             set
             {
-                ProductID = value;
+                tProductID = value;
             }
         }
 
@@ -43,7 +43,7 @@ namespace ClassLibrary
             }
             set
             {
-                ProductName = value;
+                tProductName = value;
             }
         }
 
@@ -57,7 +57,7 @@ namespace ClassLibrary
             }
             set
             {
-                Description = value;
+                tDescription = value;
             }
         }
 
@@ -71,7 +71,7 @@ namespace ClassLibrary
             }
             set
             {
-                Category = value;
+                tCategory = value;
             }
         }
 
@@ -85,7 +85,7 @@ namespace ClassLibrary
             }
             set
             {
-                Price = value;
+                tPrice = value;
             }
         }
 
@@ -99,7 +99,7 @@ namespace ClassLibrary
             }
             set
             {
-                StockCount = value;
+                tStockCount = value;
             }
         }
     }
