@@ -82,6 +82,14 @@ namespace ClassLibrary
             return DB.Execute("sproc_StockManagement_Insert");
         }
 
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductID", tThisStock.ProductID);
+            DB.Execute("sproc_StockManagement_Delete");
+
+        }
+
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();

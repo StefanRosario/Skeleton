@@ -52,7 +52,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = Stock.Valid(Available, Price, Category, StockCount, ProductName, Description);
         if (Error == "")
         {
-            Stock.ProductID = ProductID;
+            Stock.ProductID = Convert.ToInt32(txtProductID.Text);
             Stock.Description = txtDescription.Text;
             Stock.ProductName = txtProductName.Text;
             Stock.Price = Convert.ToDecimal(txtPrice.Text);

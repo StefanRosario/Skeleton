@@ -63,5 +63,36 @@ namespace TestingStock
 
 
         }
+        public void DeleteMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+            clsStock ThisStock = new clsStock();
+
+            Int32 PrimaryKey = 0;
+
+            ThisStock.Available = true;
+            ThisStock.ProductID = 7;
+            ThisStock.ProductName = "SB socks";
+            ThisStock.Price = 3.99m;
+            ThisStock.Category = "Clothing";
+            ThisStock.Description = "Rainbow SB Socks";
+            ThisStock.StockCount = 30;
+
+
+            AllStock.ThisStock = ThisStock;
+
+            PrimaryKey = AllStock.Add();
+
+            ThisStock.ProductID = PrimaryKey;
+
+            AllStock.ThisStock.Find(PrimaryKey);
+
+            AllStock.Delete();
+
+            Boolean Found = AllStock.ThisStock.Find(PrimaryKey);
+
+            Assert.IsFalse(Found);
+
+        }
     }
 }
