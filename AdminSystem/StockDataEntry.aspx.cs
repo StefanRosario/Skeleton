@@ -17,19 +17,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsStock Stock = new clsStock();
 
-        Stock.ProductID = Convert.ToInt32(txtProductID.Text);
-        Stock.Description = txtDescription.Text;
-        Stock.ProductName = txtProductName.Text;
-        Stock.Price = Convert.ToDecimal(txtPrice.Text);
-        Stock.StockCount = Convert.ToInt32(txtStockCount.Text);
-        Stock.Category = txtCategory.Text;
-        Stock.Available = chkAvailable.Checked;
+        string ProductID = txtProductID.Text;
+        string Description = txtDescription.Text;
+        string ProductName = txtProductName.Text;
+        string Price = txtPrice.Text;
+        string StockCount = txtStockCount.Text;
+        string Category = txtCategory.Text;
+        string Available = chkAvailable.Checked.ToString();
 
-        Session["Stock"] = Stock;
+        string Error = "";
+        Error = Stock.Valid(Available, Price, Category, StockCount, ProductName, Description);
+        if (Error == "")
+        {
+            Stock.ProductID = Convert.ToInt32(txtProductID.Text);
+            Stock.Description = txtDescription.Text;
+            Stock.ProductName = txtProductName.Text;
+            Stock.Price = Convert.ToDecimal(txtPrice.Text);
+            Stock.StockCount = Convert.ToInt32(txtStockCount.Text);
+            Stock.Category = txtCategory.Text;
+            Stock.Available = chkAvailable.Checked;
 
-        Response.Redirect("StockViewer.aspx");
+            clsStockCollection StockList = new clsStockCollection();
+            StockList.ThisStock = Stock;
+            StockList.Add();
+
+
+            Response.Redirect("StockList.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
-
 
     protected void btnFind_Click(object sender, EventArgs e)
     {

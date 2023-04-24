@@ -252,6 +252,34 @@ namespace TestingStock
 
             Assert.AreEqual(Error, "");
         }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+
+            clsStock Stock = new clsStock();
+
+            Int32 PrimaryKey = 0;
+
+            Stock.ProductID = 123;
+            Stock.ProductName = "SB Hoodie";
+            Stock.Available = true;
+            Stock.Category = "Clothing";
+            Stock.Description = "White SB Hoodie";
+            Stock.StockCount = 75;
+            Stock.Price = 54.99m;
+
+            AllStock.ThisStock = Stock;
+
+            PrimaryKey = AllStock.Add();
+
+            Stock.ProductID = PrimaryKey;
+
+            AllStock.ThisStock.Find(PrimaryKey);
+
+            Assert.AreEqual(AllStock.ThisStock, Stock);
+        }
     }
 }
 

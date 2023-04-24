@@ -10,7 +10,26 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:ListBox ID="lstStockList" runat="server" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" style="z-index: 1; left: 10px; top: 70px; position: absolute; height: 648px; width: 733px"></asp:ListBox>
+        <asp:ListBox ID="lstStockList" runat="server" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" style="z-index: 1; left: 16px; top: 16px; position: absolute; height: 648px; width: 733px"></asp:ListBox>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+        </p>
     </form>
 </body>
 </html>
