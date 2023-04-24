@@ -26,10 +26,12 @@
         <p>
             &nbsp;</p>
         <p>
-            &nbsp;</p>
-        <p>
-            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 202px; top: 697px; position: absolute" Text="Edit" />
         </p>
+        <p>
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 159px; top: 822px; position: absolute"></asp:Label>
+        </p>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
     </form>
 </body>
 </html>

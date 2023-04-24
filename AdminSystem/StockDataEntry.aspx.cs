@@ -8,16 +8,39 @@ using System.Web.UI.WebControls;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 ProductID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        ProductID = Convert.ToInt32(Session["ProductID"]);
+        if (IsPostBack == false)
+        {
+            if (ProductID != -1)
+            {
+                DisplayStock();
+            }
+        }
+    }
 
+    void DisplayStock()
+    {
+        clsStockCollection Stock = new clsStockCollection();
+
+        Stock.ThisStock.Find(ProductID);
+
+        txtProductID.Text = Stock.ThisStock.ProductID.ToString();
+        txtProductName.Text = Stock.ThisStock.ProductName.ToString();
+        chkAvailable.Checked = Stock.ThisStock.Available;
+        txtPrice.Text = Stock.ThisStock.Price.ToString();
+        txtStockCount.Text = Stock.ThisStock.StockCount.ToString();
+        txtDescription.Text = Stock.ThisStock.Description.ToString();
+        txtCategory.Text = Stock.ThisStock.Category.ToString();
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStock Stock = new clsStock();
 
-        string ProductID = txtProductID.Text;
+        string ProductId = txtProductID.Text;
         string Description = txtDescription.Text;
         string ProductName = txtProductName.Text;
         string Price = txtPrice.Text;
@@ -29,7 +52,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = Stock.Valid(Available, Price, Category, StockCount, ProductName, Description);
         if (Error == "")
         {
-            Stock.ProductID = Convert.ToInt32(txtProductID.Text);
+            Stock.ProductID = ProductID;
             Stock.Description = txtDescription.Text;
             Stock.ProductName = txtProductName.Text;
             Stock.Price = Convert.ToDecimal(txtPrice.Text);
@@ -38,10 +61,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Stock.Available = chkAvailable.Checked;
 
             clsStockCollection StockList = new clsStockCollection();
-            StockList.ThisStock = Stock;
-            StockList.Add();
 
-
+            if (ProductID == -1)
+            {
+                StockList.ThisStock = Stock;
+                StockList.Add();
+            }
+            else
+            {
+                StockList.ThisStock.Find(ProductID);
+                StockList.ThisStock = Stock;
+                StockList.Update();
+            }
             Response.Redirect("StockList.aspx");
         }
         else

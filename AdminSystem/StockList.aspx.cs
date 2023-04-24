@@ -38,4 +38,22 @@ public partial class _1_List : System.Web.UI.Page
     {
 
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 ProductID;
+
+        if (lstStockList.SelectedIndex != -1)
+        {
+            ProductID = Convert.ToInt32(lstStockList.SelectedValue);
+
+            Session["ProductID"] = ProductID;
+
+            Response.Redirect("StockDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to edit from the list";
+        }
+    }
 }

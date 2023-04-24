@@ -81,5 +81,19 @@ namespace ClassLibrary
 
             return DB.Execute("sproc_StockManagement_Insert");
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductID", tThisStock.ProductID);
+            DB.AddParameter("@ProductName", tThisStock.ProductName);
+            DB.AddParameter("@Price", tThisStock.Price);
+            DB.AddParameter("@Available", tThisStock.Available);
+            DB.AddParameter("@Catergory", tThisStock.Category);
+            DB.AddParameter("@Description", tThisStock.Description);
+            DB.AddParameter("@StockCount", tThisStock.StockCount);
+
+            DB.Execute("sproc_StockManagement_Update");
+        }
     }
 }
