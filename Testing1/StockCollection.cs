@@ -94,5 +94,42 @@ namespace TestingStock
             Assert.IsFalse(Found);
 
         }
+        [TestMethod]
+        public void ReportByProductNameMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+
+            clsStockCollection FilteredStock = new clsStockCollection();
+
+            FilteredStock.ReportByProductName("");
+
+            Assert.AreEqual(AllStock.Count, FilteredStock.Count);
+        }
+           
+            public void ReportByProductNameNoneFound()
+        { 
+            clsStockCollection FilteredStock = new clsStockCollection();
+
+
+            FilteredStock.ReportByProductName("nbtee");
+
+            Assert.AreEqual(0, FilteredStock.Count);
+        }
+    
+            [TestMethod]
+            public void ReportByProductNameFound()
+        { 
+            clsStockCollection FilteredStock = new clsStockCollection();
+
+            Boolean OK = false;
+
+            FilteredStock.ReportByProductName("SB Shoes");
+
+            if (FilteredStock.Count == 1)
+            {
+                OK = true;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }

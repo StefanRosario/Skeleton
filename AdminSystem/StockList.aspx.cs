@@ -76,5 +76,27 @@ public partial class _1_List : System.Web.UI.Page
         }
     }
 
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsStockCollection Stock = new clsStockCollection();
+        Stock.ReportByProductName(txtProductName.Text);
+        lstStockList.DataSource = Stock.StockList;
+        lstStockList.DataValueField = "ProductID";
+        lstStockList.DataTextField = "ProductName";
+        lstStockList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsStockCollection Stock = new clsStockCollection();
+        Stock.ReportByProductName("");
+        txtProductName.Text = "";
+        lstStockList.DataSource = Stock.StockList;
+        lstStockList.DataValueField = "ProductID";
+        lstStockList.DataTextField = "ProductName";
+        lstStockList.DataBind();
+    }
 }
+
 

@@ -10,26 +10,11 @@ namespace ClassLibrary
 
         public clsStockCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
+
             DB.Execute("sproc_StockManagement_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsStock Stock = new clsStock();
-                Stock.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
-                Stock.ProductName = Convert.ToString(DB.DataTable.Rows[Index]["ProductName"]);
-                Stock.Available = Convert.ToBoolean(DB.DataTable.Rows[Index]["Available"]);
-                Stock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
-                Stock.StockCount = Convert.ToInt32(DB.DataTable.Rows[Index]["StockCount"]);
-                Stock.Category = Convert.ToString(DB.DataTable.Rows[Index]["Catergory"]);
-                Stock.Description = Convert.ToString(DB.DataTable.Rows[Index]["Description"]);
 
-                tStockList.Add(Stock);
-
-                Index++;
-            }
+            PopulateArray(DB);
         }
 
         public List<clsStock> StockList
@@ -102,6 +87,42 @@ namespace ClassLibrary
             DB.AddParameter("@StockCount", tThisStock.StockCount);
 
             DB.Execute("sproc_StockManagement_Update");
+        }
+
+        public void ReportByProductName(string ProductName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@ProductName", ProductName);
+            DB.Execute("sproc_StockManagement_FilterByProductName");
+
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+
+            Int32 RecordCount;
+
+            RecordCount = DB.Count;
+
+            tStockList = new List<clsStock>();
+
+            while (Index < RecordCount)
+            {
+                clsStock Stock = new clsStock();
+                Stock.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
+                Stock.ProductName = Convert.ToString(DB.DataTable.Rows[Index]["ProductName"]);
+                Stock.Available = Convert.ToBoolean(DB.DataTable.Rows[Index]["Available"]);
+                Stock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
+                Stock.StockCount = Convert.ToInt32(DB.DataTable.Rows[Index]["StockCount"]);
+                Stock.Category = Convert.ToString(DB.DataTable.Rows[Index]["Catergory"]);
+                Stock.Description = Convert.ToString(DB.DataTable.Rows[Index]["Description"]);
+
+                tStockList.Add(Stock);
+
+                Index++;
+            }
         }
     }
 }
