@@ -113,7 +113,7 @@ namespace Testing4
             //Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //Create some test data to use with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 21;
             //Invoke the method
             Found = ACustomer.Find(CustomerId);
             //Check the Customerid
