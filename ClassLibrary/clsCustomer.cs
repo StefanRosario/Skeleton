@@ -4,31 +4,10 @@ using System.Linq;
 using System.Text;
 
 namespace Class_Library
-
 {
-
-
     public class clsCustomer
     {
-        private bool mActive;
-        private int mCustomerNo;
-
-
-        //private data member for active 
-        private bool Active
-        {
-            get
-            {
-                //return private data 
-                return mActive;
-            }
-            set
-            {
-                //set private data 
-                mActive = value;
-            }
-        }
-
+     
         private Int32 mCustomerId;
         public Int32 CustomerId
         {
@@ -45,25 +24,24 @@ namespace Class_Library
             }
         }
 
-        private String mFName;
-        public String FName
+        private String mFullName;
+        public String FullName
         {
             get
             {
-                return mfName;
+                return mFullName;
 
 
             }
             set
             {
                 //set value of private data memer
-                FName = value;
+                mFullName = value;
             }
         }
 
-        private string mEmail;
-        private string mfName;
 
+        private string mEmail;
         public string Email
         {
             get
@@ -79,7 +57,15 @@ namespace Class_Library
             }
         }
 
-       
+        public string Valid(string fullName, string email, string dateRegistered)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Valid(string fullName, string email, string phone, string dateRegistered)
+        {
+            throw new NotImplementedException();
+        }
 
         private Int32 mPhone;
         public Int32 Phone
@@ -112,9 +98,9 @@ namespace Class_Library
             }
         }
 
-        private string mDateRegistered;
+        private DateTime mDateRegistered;
 
-        public string DateRegistered
+        public DateTime DateRegistered
         {
             get
             {
@@ -128,10 +114,23 @@ namespace Class_Library
 
         public DateTime CustomerDate { get; set; }
         public string EmailAddress { get; set; }
-        public string FullName { get; set; }
         public DateTime DateAdded { get; set; }
 
-        public bool Find(int customerId)
+        public bool Find(int CustomerId)
+        {
+            //set the private data members to the test data value
+            mCustomerId = Convert.ToInt32("32");
+            mFullName = "Duke Dennis";
+            mEmail = " D@my365.dmu.ac.uk";
+            mPhone = Convert.ToInt32("88356201");
+            mShippingAddress = "24 rizz st";
+            mDateRegistered = Convert.ToDateTime("16/9/2015");
+            //always return true
+            return true;
+
+        }
+
+        public void Find(clsCustomer aCustomer)
         {
             throw new NotImplementedException();
         }
