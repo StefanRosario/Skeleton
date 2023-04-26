@@ -120,6 +120,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         }
     }
-}
+        void DisplayOrder()
+        {
+            clsOrderCollection OrderBook = new clsOrderCollection();
+
+            OrderBook.ThisOrder.Find(OrderID);
+
+            txtOrderID.Text = OrderBook.ThisOrder.OrderID.ToString();
+            txtCustomerID.Text = OrderBook.ThisOrder.CustomerID.ToString();
+            txtTotalCost.Text = OrderBook.ThisOrder.TotalCost.ToString();
+            txtShippingAddress.Text = OrderBook.ThisOrder.ShippingAddress;
+            txtOrderDate.Text = OrderBook.ThisOrder.OrderDate.ToString();
+            chkShipped.Checked = OrderBook.ThisOrder.Shipped;
+
+
+        }
+    }
+
+
+
 
    
