@@ -13,16 +13,11 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //get the number of the address to be processed
-        StaffID = Convert.ToInt32(Session["StaffID"]);
+        //if this is the first time the page is displayed
         if (IsPostBack == false)
         {
-            //if this is not a new record
-            if (StaffID != -1)
-            {
-                //display the current data for the record
-                DisplayStaffs();
-            }
+            //update the list box
+            DisplayStaffs();
         }
     }
 
