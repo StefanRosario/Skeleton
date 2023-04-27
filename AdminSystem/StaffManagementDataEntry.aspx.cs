@@ -13,7 +13,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the Staffs to be processed
+        StaffID = Convert.ToInt32(Session["StaffID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (StaffID != -1)
+            {
+                //display the current data for the record
+                DisplayStaffs();
+            }
+        }
 
+    }
+
+    void DisplayStaffs()
+    {
+        //create an instance of the address book
+        clsStaffCollection StaffBook = new clsStaffCollection();
+        //find the record to update
+        StaffBook.ThisStaff.Find(StaffID);
+        //display the data for this record
+        txtStaffID.Text = StaffBook.ThisStaff.StaffID.ToString();
+        txtUsername.Text = StaffBook.ThisStaff.Username;
+        txtPassword.Text = StaffBook.ThisStaff.Password;
+        txtRole.Text = StaffBook.ThisStaff.Role;
+        txtDateAdded.Text = StaffBook.ThisStaff.DateAdded.ToString();
+        chkActive.Checked = StaffBook.ThisStaff.Active;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -55,6 +81,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //if this is a new record i.e. StaffID = -1 then add the data
             if (StaffID == -1)
             {
+                //set the ThisStaff property
+                StaffList.ThisStaff = AStaff;
                 //add the new record
                 StaffList.Add();
             }
@@ -63,6 +91,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 //find the record to update
                 StaffList.ThisStaff.Find(StaffID);
+                //set the ThisStaff property
+                StaffList.ThisStaff = AStaff;
                 //update the record
                 StaffList.Update();
             }
