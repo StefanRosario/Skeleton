@@ -11,9 +11,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
     Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the Staffs to be processed
+        OrderID = Convert.ToInt32(Session["OrderID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (OrderID != -1)
+            {
+                //display the current data for the record
+                DisplayOrders();
+            }
+        }
     }
 
+    void DisplayOrders()
+    {
+        clsOrderCollection OrderBook = new clsOrderCollection();
+
+        OrderBook.ThisOrder.Find(OrderID);
+
+        txtOrderID.Text = OrderBook.ThisOrder.OrderID.ToString();
+        txtCustomerID.Text = OrderBook.ThisOrder.CustomerID.ToString();
+        txtTotalCost.Text = OrderBook.ThisOrder.TotalCost.ToString();
+        txtShippingAddress.Text = OrderBook.ThisOrder.ShippingAddress;
+        txtOrderDate.Text = OrderBook.ThisOrder.OrderDate.ToString();
+        chkShipped.Checked = OrderBook.ThisOrder.Shipped;
+
+
+    }
     protected void btnOK_Click(object sender, EventArgs e)
     {
         //Create a new instance of clsStaff
@@ -32,17 +57,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrder.Valid(CustomerID, ShippingAddress, TotalCost, OrderDate);
         if (Error == "")
         {
-            //capture the StaffID
+            //capture the OrderID
             AnOrder.OrderID = OrderID;
-            //Capture the Username
+            //Capture the CustomerID
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
-            //Capture the Password
+            //Capture the ShippingAddress
             AnOrder.ShippingAddress = ShippingAddress;
-            //Capture the Role
+            //Capture the TotalCost
             AnOrder.TotalCost = Convert.ToDecimal(TotalCost);
-            //Capture DateAdded
+            //Capture OrderDate
             AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
-            //capture active
+            //capture Shipped
             AnOrder.Shipped = chkShipped.Checked;
             //create a new instance of the address collection
             clsOrderCollection OrderList = new clsOrderCollection();
@@ -120,22 +145,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         }
     }
-        void DisplayOrder()
-        {
-            clsOrderCollection OrderBook = new clsOrderCollection();
-
-            OrderBook.ThisOrder.Find(OrderID);
-
-            txtOrderID.Text = OrderBook.ThisOrder.OrderID.ToString();
-            txtCustomerID.Text = OrderBook.ThisOrder.CustomerID.ToString();
-            txtTotalCost.Text = OrderBook.ThisOrder.TotalCost.ToString();
-            txtShippingAddress.Text = OrderBook.ThisOrder.ShippingAddress;
-            txtOrderDate.Text = OrderBook.ThisOrder.OrderDate.ToString();
-            chkShipped.Checked = OrderBook.ThisOrder.Shipped;
-
-
-        }
-    }
+}
 
 
 

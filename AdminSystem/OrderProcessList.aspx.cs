@@ -13,17 +13,15 @@ public partial class _1_List : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //get the number of the address to be processed
-        OrderID = Convert.ToInt32(Session["OrderID"]);
+       
         if (IsPostBack == false)
         {
-            //if this is not a new record
-            if (OrderID != -1)
-            {
+            
                 //display the current data for the record
                 DisplayOrders();
             }
         }
-    }
+    
 
 
     void DisplayOrders()
@@ -35,7 +33,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstOrderList.DataValueField = "OrderID";
         //set the data firld to display
-        lstOrderList.DataTextField = "CustomerID";
+        lstOrderList.DataTextField = "ShippingAddress";
         //bind the data to the list
         lstOrderList.DataBind();
 
@@ -129,6 +127,20 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderList.DataValueField = "OrderID";
         //set the name of the field to disply
         lstOrderList.DataTextField = "ShippingAddress";
+        //bind the data to the list
+        lstOrderList.DataBind();
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Staff Collection
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportByShippingAddress(txtFilter.Text);
+        lstOrderList.DataSource = Orders.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "OrderID";
+        //set the name of the field to disply
+        lstOrderList.DataTextField = "TotalCost";
         //bind the data to the list
         lstOrderList.DataBind();
     }
