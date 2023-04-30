@@ -18,7 +18,7 @@
         </p>
         <asp:TextBox ID="FullNameTxt" runat="server" style="z-index: 1; left: 150px; top: 77px; position: absolute; width: 140px;" height="22px"></asp:TextBox>
         <asp:Label ID="lblEmail" runat="server" style="z-index: 1; left: 37px; top: 108px; position: absolute" Text="Email Address" width="92px"></asp:Label>
-        <asp:TextBox ID="EmailAddressTxt" runat="server" style="z-index: 1; left: 151px; top: 106px; position: absolute; width: 140px;" height="22px" OnTextChanged="TextBox3_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="EmailTxt" runat="server" style="z-index: 1; left: 151px; top: 106px; position: absolute; width: 140px;" height="22px" OnTextChanged="TextBox3_TextChanged"></asp:TextBox>
         <asp:Label ID="lblShippingAdd" runat="server" style="z-index: 1; left: 34px; top: 140px; position: absolute; width: 92px" Text="Shipping Address"></asp:Label>
         <asp:TextBox ID="ShippingAddressTxt" runat="server" style="z-index: 1; left: 151px; top: 141px; position: absolute; width: 140px;" height="22px"></asp:TextBox>
         <asp:Label ID="lblPhoneNo" runat="server" style="z-index: 1; left: 35px; top: 176px; position: absolute" Text="Phone Number"></asp:Label>
