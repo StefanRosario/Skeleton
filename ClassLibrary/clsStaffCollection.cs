@@ -145,5 +145,15 @@ namespace ClassLibrary
             //populate the array list with the data table
             PopulateArray(DB);
         }
+
+        public void ReportByEmail(string v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReportByShippingAddress(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
