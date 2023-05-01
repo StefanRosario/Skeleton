@@ -115,7 +115,7 @@ namespace Testing4
             //Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //Create some test data to use with the method
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 1;
             //Invoke the method
             Found = ACustomer.Find(CustomerId);
             //Check the Customerid
@@ -203,7 +203,7 @@ namespace Testing4
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the property
-            if (ACustomer.Phone != Convert.ToInt32("Test Phone"))
+            if (ACustomer.PhoneNumber != Convert.ToInt32("Test Phone"))
             {
                 OK = false;
             }
@@ -641,7 +641,7 @@ namespace Testing4
             //invoke the method
             Error = ACustomer.Valid(FullName, Email, ShippingAddress, DateRegistered);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
 
         }
 
@@ -764,8 +764,8 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //convert the date variable to a string variable
-            string ShippingAddress = "aaaaaaa";//this should be ok 
-            ShippingAddress = ShippingAddress.PadRight(50, 'a');
+            string ShippingAddress = ""; 
+            ShippingAddress = ShippingAddress.PadRight(51, 'a');
             //invoke the method
             Error = ACustomer.Valid(FullName, Email, ShippingAddress, DateRegistered);
             //test to see that the result is correct

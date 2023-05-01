@@ -16,7 +16,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the Staffs to be processed
+        CustomerId = Convert.ToInt32(Session["CustomerId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (CustomerId != -1)
+            {
+                //display the current data for the record
+                DisplayCustomers();
+            }
+        }
+    }
 
+    void DisplayCustomers()
+    {
+        //create an instance of the address book
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        //find the record to update
+        CustomerBook.ThisCustomer.Find(CustomerId);
+        //display the data for this record
+        CustomerIdTxt.Text = CustomerBook.ThisCustomer.CustomerId.ToString();
+        FullNameTxt.Text = CustomerBook.ThisCustomer.FullName;
+        EmailTxt.Text = CustomerBook.ThisCustomer.Email;
+        PhoneNumberTxt.Text = CustomerBook.ThisCustomer.Phone;
+        DateRegisterTxt.Text = CustomerBook.ThisCustomer.DateRegistered.ToString();
+        ShippingAddressTxt.Text = CustomerBook.ThisCustomer.ShippingAddress;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -44,7 +69,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //Capture the Email
             ACustomer.Email = Email;
             //Capture the Phone
-            ACustomer.Phone = Convert.ToInt32(Phone);
+            ACustomer.PhoneNumber = Convert.ToInt32(Phone);
             //capture shipping address
             ACustomer.ShippingAddress = ShippingAddress;
             //Capture DAte Registered
@@ -87,7 +112,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    protected void btnCancel_Click(object sender, EventArgs e)
+    protected void BtnCancel_Click(object sender, EventArgs e)
     {
         if (Page.Request.UrlReferrer != null)
         {
@@ -124,7 +149,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             CustomerIdTxt.Text = ACustomer.CustomerId.ToString();
             FullNameTxt.Text = ACustomer.FullName.ToString();
             EmailTxt.Text = ACustomer.Email.ToString();
-            PhoneNumberTxt.Text = ACustomer.Phone.ToString();
+            PhoneNumberTxt.Text = ACustomer.PhoneNumber.ToString();
             ShippingAddressTxt.Text = ACustomer.ShippingAddress.ToString();
             DateRegisterTxt.Text = ACustomer.DateRegistered.ToString();
             
@@ -132,7 +157,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        if (Page.Request.UrlReferrer != null)
+        {
+            Response.Redirect(Page.Request.UrlReferrer.ToString());
+        }
+        else
+        {
+            // If there is no previous page, redirect to a default page
+            Response.Redirect("CustomerManagementDataEntry.aspx");
+        }
+    }
     protected void BttnOk_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void FindBttn_Click(object sender, EventArgs e)
     {
 
     }

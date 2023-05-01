@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 
 namespace Class_Library
 {
@@ -56,7 +56,7 @@ namespace Class_Library
         }
 
         private Int32 mPhone;
-        public Int32 Phone
+        public Int32 PhoneNumber
         {
             get
             {
@@ -100,7 +100,7 @@ namespace Class_Library
             }
         }
 
-
+        public string Phone { get; set; }
 
         public bool Find(int CustomerId)
         {
@@ -196,6 +196,11 @@ namespace Class_Library
             }
             //return any error messages
             return Error;
+        }
+
+        public static implicit operator List<object>(clsCustomer v)
+        {
+            throw new NotImplementedException();
         }
     } 
  }
